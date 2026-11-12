@@ -1,30 +1,29 @@
-import { HeroSection } from "@/components/home/HeroSection";
-import { TrustHighlights } from "@/components/home/TrustHighlights";
-import { FeaturedProductsSection } from "@/components/home/FeaturedProductsSection";
-import { WhyChooseUs } from "@/components/home/WhyChooseUs";
-import { QualitySection } from "@/components/home/QualitySection";
-import { CTASection } from "@/components/home/CTASection";
+import type { Metadata } from "next";
+import { Hero } from "@/components/home/Hero";
+import { CompanyIntro } from "@/components/home/CompanyIntro";
+import { CategoryGrid } from "@/components/home/CategoryGrid";
+import { FeaturedProducts } from "@/components/home/FeaturedProducts";
+import { WhyUs } from "@/components/home/WhyUs";
+import { TechnicalQuality } from "@/components/home/TechnicalQuality";
+import { CtaBand } from "@/components/shared/CtaBand";
+import { BUSINESS_CATEGORY, BUSINESS_NAME, BUSINESS_TAGLINE } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: { absolute: `${BUSINESS_NAME} | ${BUSINESS_CATEGORY} in Gujranwala` },
+  description: `${BUSINESS_TAGLINE} PVC building wire, flexible cables, copper wire and power cables from Ayesha Traders, Gujranwala.`,
+  alternates: { canonical: "/" },
+};
 
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero Section */}
-      <HeroSection />
-
-      {/* 2. Trust Highlights */}
-      <TrustHighlights />
-
-      {/* 3. Products Section */}
-      <FeaturedProductsSection />
-
-      {/* 4. Why Choose Us */}
-      <WhyChooseUs />
-
-      {/* 5. Quality Section */}
-      <QualitySection />
-
-      {/* 6. CTA Section */}
-      <CTASection />
+      <Hero />
+      <CompanyIntro />
+      <CategoryGrid />
+      <FeaturedProducts />
+      <WhyUs />
+      <TechnicalQuality />
+      <CtaBand />
     </>
   );
 }

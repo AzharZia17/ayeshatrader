@@ -1,289 +1,345 @@
-export type ProductCategory =
-  | "PVC Electric Wires"
-  | "Flexible Cables"
-  | "Copper Wires"
-  | "Power Cables";
+/**
+ * Single source of truth for all product information.
+ * Images live in /public/images/products/.
+ *
+ * Content policy: specifications describe construction only. No certifications,
+ * standards compliance or performance figures are stated unless verified.
+ */
 
-export interface Product {
-  id: string;
+export type CategorySlug =
+  | "pvc-electric-wires"
+  | "flexible-cables"
+  | "copper-wires"
+  | "power-cables";
+
+export interface ProductCategory {
+  slug: CategorySlug;
   name: string;
-  category: ProductCategory;
-  shortDescription: string;
-  fullDescription: string;
-  conductor: string;
-  insulation: string;
-  voltageGrade: string;
-  availableSizes: string[];
-  applications: string[];
-  features: string[];
+  description: string;
   image: string;
-  isFeatured?: boolean;
-  tag?: string;
+  imageAlt: string;
 }
 
-export const CATEGORIES: ProductCategory[] = [
-  "PVC Electric Wires",
-  "Flexible Cables",
-  "Copper Wires",
-  "Power Cables",
-];
+export interface ProductSpec {
+  label: string;
+  value: string;
+}
 
-export const PRODUCTS: Product[] = [
+export interface Product {
+  slug: string;
+  name: string;
+  category: CategorySlug;
+  /** One-line summary for listings */
+  summary: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  specs: ProductSpec[];
+  sizes: string[];
+  /** Short note displayed under the size list */
+  sizeNote?: string;
+  applications: string[];
+  featured?: boolean;
+}
+
+export const CATEGORIES: readonly ProductCategory[] = [
   {
-    id: "pvc-single-core-building-wire",
+    slug: "pvc-electric-wires",
+    name: "PVC Electric Wires",
+    description:
+      "Single-core building wire and twin flat cable for house wiring, lighting and socket circuits.",
+    image: "/images/products/pvc-building-wire.jpg",
+    imageAlt: "Coils of red, black, yellow and blue PVC insulated building wire",
+  },
+  {
+    slug: "flexible-cables",
+    name: "Flexible Cables",
+    description:
+      "Multi-core flexible copper cable and flat submersible cable for appliances, machines and pumps.",
+    image: "/images/products/flexible-multicore-cable.jpg",
+    imageAlt: "Black flexible multi-core cable with stripped copper conductors",
+  },
+  {
+    slug: "copper-wires",
+    name: "Copper Wires",
+    description:
+      "Bare and green earthing wire, and enamelled copper winding wire for motors and coils.",
+    image: "/images/products/copper-winding-wire.jpg",
+    imageAlt: "Spool of enamelled copper winding wire",
+  },
+  {
+    slug: "power-cables",
+    name: "Power Cables",
+    description:
+      "Armoured and unarmoured multi-core copper cables for main feeders and distribution boards.",
+    image: "/images/products/industrial-power-cable.jpg",
+    imageAlt: "Armoured multi-core power cable cut away to show copper conductors",
+  },
+] as const;
+
+export const PRODUCTS: readonly Product[] = [
+  {
+    slug: "single-core-pvc-building-wire",
     name: "Single Core PVC Building Wire",
-    category: "PVC Electric Wires",
-    shortDescription:
-      "General-purpose single core insulated copper wire for residential and commercial conduit wiring.",
-    fullDescription:
-      "High-conductivity copper conductor insulated with premium lead-free PVC compound. Designed for conduit and surface wiring in homes, shops, and commercial offices with dependable heat and moisture resistance.",
-    conductor: "High Conductivity Annealed Copper",
-    insulation: "Flame Retardant PVC (Grade A)",
-    voltageGrade: "450 / 750 V",
-    availableSizes: [
-      "3/0.029 (1.0 mm²)",
-      "7/0.029 (1.5 mm²)",
-      "7/0.036 (2.5 mm²)",
-      "7/0.044 (4.0 mm²)",
-      "7/0.052 (6.0 mm²)",
-      "7/0.064 (10.0 mm²)",
+    category: "pvc-electric-wires",
+    summary: "Single-core stranded copper wire with PVC insulation for conduit wiring.",
+    description:
+      "Single-core copper building wire insulated with PVC and supplied in coils. Used for fixed wiring in conduit for lighting, sockets and switchboard connections. Available in several insulation colours for circuit identification.",
+    image: "/images/products/pvc-building-wire.jpg",
+    imageAlt: "Coils of red, black, yellow and blue single core PVC building wire",
+    specs: [
+      { label: "Conductor", value: "Stranded copper" },
+      { label: "Insulation", value: "PVC" },
+      { label: "Cores", value: "1 (single core)" },
+      { label: "Colours", value: "Red, black, blue, yellow (as stocked)" },
+      { label: "Typical voltage class", value: "450/750 V" },
+      { label: "Supplied as", value: "Coils" },
     ],
+    sizes: ["3/0.029", "7/0.029", "7/0.036", "7/0.044", "7/0.052", "7/0.064"],
+    sizeNote: "Strand count / strand diameter. Colour and stock confirmed at enquiry.",
     applications: [
-      "Residential conduit wiring",
-      "Lighting circuits and fan points",
-      "Power plug circuits and switchboards",
-      "Commercial office buildings",
+      "Conduit wiring in homes and shops",
+      "Lighting and fan circuits",
+      "Socket outlet circuits",
+      "Switchboard and distribution board connections",
     ],
-    features: [
-      "Smooth sheath for easy pulling through PVC conduits",
-      "High dielectric insulation resistance",
-      "High copper purity for low electrical losses",
-      "Available in Red, Black, Blue, Yellow, and Green",
-    ],
-    image: "/images/pvc-building-wire.jpg",
-    isFeatured: true,
-    tag: "High Demand",
   },
   {
-    id: "pvc-twin-flat-wire",
-    name: "Twin Flat PVC Cable (2-Core)",
-    category: "PVC Electric Wires",
-    shortDescription:
-      "Two-core flat cable with individual PVC insulated copper conductors and overall protective sheath.",
-    fullDescription:
-      "Popular for surface wiring, battens, and domestic installations. Features two parallel solid or stranded copper conductors independently insulated and encased in a flat white outer PVC sheath for clean surface appearance.",
-    conductor: "Electrolytic Annealed Copper",
-    insulation: "Dual-layer PVC insulation and outer sheath",
-    voltageGrade: "300 / 500 V",
-    availableSizes: [
-      "3/0.029 (2-Core)",
-      "7/0.029 (2-Core)",
-      "7/0.036 (2-Core)",
-      "7/0.044 (2-Core)",
+    slug: "twin-flat-pvc-cable",
+    name: "Twin Flat PVC Cable",
+    category: "pvc-electric-wires",
+    summary: "Two-core flat copper cable with PVC insulation and outer sheath.",
+    description:
+      "Two insulated copper conductors laid side by side inside a flat PVC sheath. Its low profile makes it suitable for surface wiring and short extensions where a single sheathed cable is more convenient than two separate wires.",
+    image: "/images/products/twin-flat-wire.jpg",
+    imageAlt: "Coil of white twin flat PVC cable with red and black conductors exposed",
+    specs: [
+      { label: "Conductor", value: "Copper" },
+      { label: "Insulation", value: "PVC + PVC sheath" },
+      { label: "Cores", value: "2 (flat)" },
+      { label: "Colours", value: "White sheath (as stocked)" },
+      { label: "Typical voltage class", value: "300/500 V" },
+      { label: "Supplied as", value: "Coils" },
     ],
+    sizes: ["3/0.029", "7/0.029", "7/0.036", "7/0.044"],
+    sizeNote: "Strand count / strand diameter, 2 core. Stock confirmed at enquiry.",
     applications: [
-      "Surface wiring on wood battens or clips",
-      "Domestic room extensions and lighting",
-      "Shop counter wiring and display setups",
+      "Surface wiring on walls and battens",
+      "Lighting extensions",
+      "Shop and display lighting",
     ],
-    features: [
-      "Compact flat profile rests neat against walls",
-      "Easy stripping and termination",
-      "Tough outer jacket prevents physical abrasions",
-    ],
-    image: "/images/twin-flat-wire.jpg",
-    isFeatured: false,
+    featured: true,
   },
   {
-    id: "flexible-multicore-copper-cable",
+    slug: "flexible-multi-core-copper-cable",
     name: "Flexible Multi-Core Copper Cable",
-    category: "Flexible Cables",
-    shortDescription:
-      "Highly flexible round multi-core cable for portable equipment, machinery, and appliances.",
-    fullDescription:
-      "Manufactured with finely bunched copper strands offering exceptional bending flexibility and vibration tolerance. Protected with an oil and weather-resistant flexible PVC outer sheath.",
-    conductor: "High-Flexibility Multi-Strand Fine Copper",
-    insulation: "Flexible Polyvinyl Chloride (PVC)",
-    voltageGrade: "300 / 500 V & 450 / 750 V",
-    availableSizes: [
-      "2 Core (0.75 mm² - 4.0 mm²)",
-      "3 Core (1.0 mm² - 6.0 mm²)",
-      "4 Core (1.5 mm² - 10.0 mm²)",
-      "5 Core (1.5 mm² - 4.0 mm²)",
+    category: "flexible-cables",
+    summary: "Round flexible cable with fine-stranded copper cores and PVC sheath.",
+    description:
+      "Round multi-core cable made with finely stranded copper conductors, which makes it easier to bend and route than rigid building wire. Used to connect appliances, portable equipment and machinery.",
+    image: "/images/products/flexible-multicore-cable.jpg",
+    imageAlt: "Black round flexible multi-core cable with copper conductors",
+    specs: [
+      { label: "Conductor", value: "Fine-stranded copper" },
+      { label: "Insulation", value: "PVC + PVC sheath" },
+      { label: "Cores", value: "2, 3 or 4 (round)" },
+      { label: "Typical voltage class", value: "300/500 V" },
+      { label: "Supplied as", value: "Coils / cut length" },
     ],
+    sizes: [
+      "2 Core × 1.0 mm²",
+      "2 Core × 1.5 mm²",
+      "3 Core × 1.5 mm²",
+      "3 Core × 2.5 mm²",
+      "4 Core × 1.5 mm²",
+      "4 Core × 2.5 mm²",
+    ],
+    sizeNote: "Other core counts and sizes on request. Stock confirmed at enquiry.",
     applications: [
-      "Heavy domestic appliances (Refrigerators, ACs, Washing Machines)",
-      "Industrial machinery hookups and extension cords",
-      "Movable power distribution boards",
-      "Workshop and power tool cabling",
+      "Appliance and equipment connections",
+      "Workshop machines and power tools",
+      "Extension and portable power leads",
+      "Control panel wiring",
     ],
-    features: [
-      "High flexibility prevents strand breakage upon repeated flexing",
-      "Color-coded internal cores for safe installation",
-      "Abrasion and tear-resistant outer circular jacket",
-    ],
-    image: "/images/flexible-multicore-cable.jpg",
-    isFeatured: true,
-    tag: "Top Quality",
   },
   {
-    id: "submersible-flat-pump-cable",
+    slug: "3-core-flat-submersible-cable",
     name: "3-Core Flat Submersible Cable",
-    category: "Flexible Cables",
-    shortDescription:
-      "Water-resistant flat cable engineered specifically for deep-well submersible agricultural and tube well pumps.",
-    fullDescription:
-      "Specially formulated waterproof grade insulation and sheathing that withstands continuous water submersion, high hydrostatic pressure, and temperature fluctuations in deep borewells and tube wells.",
-    conductor: "Class 5 Flexible Copper Conductors",
-    insulation: "Water-impervious Grade PVC / Rubber Sheath",
-    voltageGrade: "600 / 1000 V",
-    availableSizes: [
+    category: "flexible-cables",
+    summary: "Flat three-core copper cable commonly used with submersible pumps.",
+    description:
+      "Flat three-core cable with colour-coded cores, commonly used to connect submersible pumps to the starter. The flat form lies neatly alongside the pump's riser pipe.",
+    image: "/images/products/submersible-flat-cable.jpg",
+    imageAlt: "Coil of blue 3-core flat submersible cable with red, yellow and blue cores",
+    specs: [
+      { label: "Conductor", value: "Stranded copper" },
+      { label: "Insulation", value: "PVC + PVC sheath" },
+      { label: "Cores", value: "3 (flat), colour-coded" },
+      { label: "Supplied as", value: "Coils / cut length" },
+      { label: "Rating", value: "Confirm at enquiry" },
+    ],
+    sizes: [
+      "3 Core × 1.5 mm²",
       "3 Core × 2.5 mm²",
       "3 Core × 4.0 mm²",
       "3 Core × 6.0 mm²",
-      "3 Core × 10.0 mm²",
-      "3 Core × 16.0 mm²",
     ],
+    sizeNote:
+      "Choose the size according to pump rating and cable length. Stock confirmed at enquiry.",
     applications: [
-      "Agricultural tube well submersible water pumps",
-      "Deep well domestic water pumps",
-      "Irrigation water lift systems",
-      "Wastewater and drainage submersible systems",
+      "Submersible water pumps",
+      "Tube well and borehole installations",
+      "Irrigation pump supply",
     ],
-    features: [
-      "Impervious to water penetration under pressure",
-      "Excellent dielectric strength under submerged conditions",
-      "Flexible flat geometry facilitates borehole pipe attachment",
-    ],
-    image: "/images/submersible-flat-cable.jpg",
-    isFeatured: true,
+    featured: true,
   },
   {
-    id: "bare-copper-earthing-wire",
+    slug: "bare-and-green-ground-earthing-wire",
     name: "Bare & Green Ground Earthing Wire",
-    category: "Copper Wires",
-    shortDescription:
-      "High-conductivity solid and stranded copper conductors for electrical grounding and lightning safety.",
-    fullDescription:
-      "Essential for safeguarding human life, buildings, and electrical equipment. High electrical conductivity ensures rapid discharge of fault currents into the ground with minimal impedance.",
-    conductor: "99%+ Electrolytic Tough Pitch (ETP) Copper",
-    insulation: "Available Bare or Green/Yellow Striped PVC",
-    voltageGrade: "Grounding / Earth Return",
-    availableSizes: [
-      "7/0.036 (Earthing)",
-      "7/0.044 (Earthing)",
-      "7/0.064 (Earthing)",
-      "16 mm² Bare Stranded",
-      "25 mm² Bare Stranded",
-      "35 mm² Bare Stranded",
+    category: "copper-wires",
+    summary: "Bare copper and green insulated wire for earthing and grounding.",
+    description:
+      "Copper wire for earth connections, supplied bare and in green insulation. Used to connect panels, equipment frames and earth electrodes to the installation's earthing system.",
+    image: "/images/products/single-core-earth-wire.jpg",
+    imageAlt: "Coils of green and yellow insulated earth wire and bare copper wire",
+    specs: [
+      { label: "Conductor", value: "Copper" },
+      { label: "Types", value: "Bare copper; green / green-yellow PVC insulated" },
+      { label: "Cores", value: "1 (single core)" },
+      { label: "Supplied as", value: "Coils" },
     ],
+    sizes: ["3/0.029", "7/0.029", "7/0.036", "7/0.044", "7/0.052", "7/0.064"],
+    sizeNote:
+      "Strand count / strand diameter. Bare or insulated type to be stated in the enquiry.",
     applications: [
-      "Main electrical panel grounding (Earth pit connection)",
-      "Lightning arrestor down-conductors",
-      "Transformer and generator neutral earthing",
-      "Industrial equipment body earthing",
+      "Earth continuity in wiring installations",
+      "Panel and equipment earthing",
+      "Connections to earth electrodes",
     ],
-    features: [
-      "Low electrical resistance for maximum safety discharge",
-      "High corrosion resistance when exposed to soils",
-      "Durable heavy-gauge construction",
-    ],
-    image: "/images/single-core-earth-wire.jpg",
-    isFeatured: false,
+    featured: true,
   },
   {
-    id: "enameled-copper-winding-wire",
-    name: "Copper Winding & Magnet Wire",
-    category: "Copper Wires",
-    shortDescription:
-      "Enamelled pure copper magnet wire for electric motors, transformers, and fan rewinding.",
-    fullDescription:
-      "High purity copper drawn to precise round gauges and coated with thin, tough enamel insulation. Engineered for high dielectric breakdown resistance, smooth winding, and high thermal endurance.",
-    conductor: "Refined High-Purity Copper Rod",
-    insulation: "High Thermal Class Polyurethane / Polyester Enamel",
-    voltageGrade: "Up to 155°C / 180°C Thermal Class",
-    availableSizes: [
-      "SWG 18 to SWG 36 available on wooden & plastic spools",
-      "Custom spool weights: 5 kg, 10 kg, 20 kg",
+    slug: "enamelled-copper-winding-magnet-wire",
+    name: "Enamelled Copper Winding & Magnet Wire",
+    category: "copper-wires",
+    summary: "Enamel-coated round copper wire on spools for motor and coil winding.",
+    description:
+      "Round copper wire coated with a thin insulating enamel, supplied on spools. Used by rewinding workshops for fans, motors, transformers and coils.",
+    image: "/images/products/copper-winding-wire.jpg",
+    imageAlt: "Spool of enamelled copper winding wire",
+    specs: [
+      { label: "Conductor", value: "Round copper" },
+      { label: "Insulation", value: "Enamel coating" },
+      { label: "Size system", value: "SWG" },
+      { label: "Supplied as", value: "Spools" },
+      { label: "Thermal class", value: "Confirm at enquiry" },
     ],
+    sizes: [
+      "SWG 18",
+      "SWG 20",
+      "SWG 22",
+      "SWG 24",
+      "SWG 26",
+      "SWG 28",
+      "SWG 30",
+      "SWG 32",
+      "SWG 34",
+      "SWG 36",
+    ],
+    sizeNote: "Spool weights and stock confirmed at enquiry.",
     applications: [
-      "Ceiling fan and exhaust fan motor winding",
-      "Single-phase and 3-phase electric motors",
-      "Distribution and power transformers",
-      "Solenoids, coils, and choke assemblies",
+      "Fan and motor rewinding",
+      "Transformer and choke winding",
+      "Coils, solenoids and relays",
     ],
-    features: [
-      "Uniform enamel film thickness without pinholes",
-      "High thermal endurance prevents short circuits under load",
-      "Smooth surface finish prevents enamel peeling during winding",
-    ],
-    image: "/images/copper-winding-wire.jpg",
-    isFeatured: true,
-    tag: "Workshop Favorite",
   },
   {
-    id: "low-voltage-armoured-power-cable",
+    slug: "armoured-multi-core-power-cable",
     name: "Armoured Multi-Core Power Cable",
-    category: "Power Cables",
-    shortDescription:
-      "Steel wire armoured (SWA) heavy-duty copper power cable for direct burial and industrial power feed.",
-    fullDescription:
-      "Engineered for rugged environments where mechanical protection is required. Features multi-core copper conductors, primary PVC/XLPE insulation, extruded PVC bedding, galvanised steel wire armour, and tough black PVC oversheath.",
-    conductor: "Stranded Circular Compacted Annealed Copper",
-    insulation: "XLPE / Heavy PVC Compound",
-    voltageGrade: "600 / 1000 V (0.6/1.0 kV)",
-    availableSizes: [
-      "4 Core × 10 mm²",
+    category: "power-cables",
+    summary: "Multi-core copper power cable with steel wire armour and PVC sheath.",
+    description:
+      "Multi-core copper power cable with a layer of steel wire armour under the outer sheath for mechanical protection. Used for main supply and feeder runs where the cable may be exposed to physical damage, including underground routes.",
+    image: "/images/products/industrial-power-cable.jpg",
+    imageAlt: "Armoured multi-core power cable cut away to show steel wire armour and copper cores",
+    specs: [
+      { label: "Conductor", value: "Stranded copper" },
+      { label: "Insulation", value: "PVC" },
+      { label: "Protection", value: "Steel wire armour" },
+      { label: "Outer sheath", value: "PVC" },
+      { label: "Typical voltage class", value: "0.6/1 kV" },
+      { label: "Supplied as", value: "Drums / cut length" },
+    ],
+    sizes: [
+      "3 Core × 16 mm²",
+      "3 Core × 25 mm²",
       "4 Core × 16 mm²",
       "4 Core × 25 mm²",
       "4 Core × 35 mm²",
       "4 Core × 50 mm²",
-      "4 Core × 70 mm² and above",
     ],
+    sizeNote: "Larger sizes on request. Stock confirmed at enquiry.",
     applications: [
-      "Main power distribution from transformer to main panel",
-      "Direct ground burial without conduits",
-      "Industrial factory and workshop main feeders",
-      "Commercial plaza power infrastructure",
+      "Main feeders from supply to distribution board",
+      "Underground and outdoor cable runs",
+      "Factories, workshops and commercial buildings",
     ],
-    features: [
-      "Steel armour protects against heavy physical impacts and rodents",
-      "Can be directly buried underground",
-      "High short-circuit current carrying capacity",
-    ],
-    image: "/images/industrial-power-cable.jpg",
-    isFeatured: true,
-    tag: "Heavy Duty",
   },
   {
-    id: "unarmoured-cu-pvc-power-cable",
+    slug: "unarmoured-multi-core-power-cable",
     name: "Unarmoured Multi-Core Power Cable",
-    category: "Power Cables",
-    shortDescription:
-      "Multi-core industrial copper power cable for installation in cable trays, trenches, and conduits.",
-    fullDescription:
-      "Designed for reliable secondary power distribution indoors and sheltered environments. Offers excellent conductivity, reduced weight compared to armoured options, and dependable insulation life.",
-    conductor: "High Conductivity Plain Annealed Stranded Copper",
-    insulation: "PVC Insulation with Tough Outer PVC Sheath",
-    voltageGrade: "600 / 1000 V",
-    availableSizes: [
-      "2 Core (4.0 mm² - 25 mm²)",
-      "3 Core (4.0 mm² - 50 mm²)",
-      "4 Core (4.0 mm² - 70 mm²)",
+    category: "power-cables",
+    summary: "Multi-core copper power cable with PVC insulation and PVC sheath.",
+    description:
+      "Multi-core copper power cable without armour, lighter and easier to install than armoured cable. Suited to indoor runs in trays, ducts and conduit where mechanical protection is provided by the installation.",
+    image: "/images/products/unarmoured-power-cable.jpg",
+    imageAlt: "Unarmoured multi-core power cable with red, yellow, blue and black cores",
+    specs: [
+      { label: "Conductor", value: "Stranded copper" },
+      { label: "Insulation", value: "PVC" },
+      { label: "Protection", value: "None (unarmoured)" },
+      { label: "Outer sheath", value: "PVC" },
+      { label: "Typical voltage class", value: "0.6/1 kV" },
+      { label: "Supplied as", value: "Drums / cut length" },
     ],
+    sizes: [
+      "3 Core × 10 mm²",
+      "3 Core × 16 mm²",
+      "4 Core × 10 mm²",
+      "4 Core × 16 mm²",
+      "4 Core × 25 mm²",
+      "4 Core × 35 mm²",
+    ],
+    sizeNote: "Larger sizes on request. Stock confirmed at enquiry.",
     applications: [
-      "Indoor cable trays and ladders",
-      "Sub-distribution boards in plazas and factories",
-      "Generator connection panels",
-      "HVAC and central chiller power lines",
+      "Sub-distribution boards",
+      "Indoor cable trays and ducts",
+      "Generator and changeover connections",
     ],
-    features: [
-      "Lighter weight and easier handling than armoured cable",
-      "Weather and UV resistant outer sheath",
-      "Certified gauge specifications",
-    ],
-    image: "/images/unarmoured-power-cable.jpg",
-    isFeatured: false,
+    featured: true,
   },
 ];
 
+export function getCategory(slug: string): ProductCategory | undefined {
+  return CATEGORIES.find((c) => c.slug === slug);
+}
+
+export function getCategoryName(slug: CategorySlug): string {
+  return getCategory(slug)?.name ?? slug;
+}
+
+export function getProduct(slug: string): Product | undefined {
+  return PRODUCTS.find((p) => p.slug === slug);
+}
+
+export function getProductsByCategory(slug: CategorySlug): Product[] {
+  return PRODUCTS.filter((p) => p.category === slug);
+}
+
+export function getFeaturedProducts(limit = 4): Product[] {
+  return PRODUCTS.filter((p) => p.featured).slice(0, limit);
+}
+
+export function isCategorySlug(value: string | null | undefined): value is CategorySlug {
+  return CATEGORIES.some((c) => c.slug === value);
+}

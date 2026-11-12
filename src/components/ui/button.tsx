@@ -4,30 +4,26 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-2 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md text-sm font-semibold whitespace-nowrap transition-colors outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-brand text-white hover:bg-brand-hover",
         outline:
-          "border-border bg-background hover:bg-muted hover:text-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost:
-          "hover:bg-muted hover:text-foreground",
-        destructive:
-          "bg-destructive text-white hover:bg-destructive/90",
-        link: "text-primary underline-offset-4 hover:underline",
+          "border border-border-strong bg-white text-charcoal hover:border-charcoal hover:bg-white",
+        "outline-inverse":
+          "border border-white/40 bg-transparent text-white hover:bg-white hover:text-brand",
+        inverse: "bg-white text-brand hover:bg-surface-gray",
+        secondary: "bg-surface-gray text-charcoal hover:bg-[#ebede9]",
+        ghost: "text-charcoal hover:bg-surface-gray",
+        link: "h-auto p-0 text-brand underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-9 px-4 py-2",
-        xs: "h-7 rounded-md px-2.5 text-xs",
-        sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-11 rounded-lg px-6 text-base",
-        icon: "h-9 w-9 p-0",
-        "icon-xs": "h-6 w-6 p-0",
-        "icon-sm": "h-7 w-7 p-0",
-        "icon-lg": "h-11 w-11 p-0",
+        default: "h-10 px-4",
+        sm: "h-9 px-3.5 text-[0.8125rem]",
+        lg: "h-12 px-6 text-[0.9375rem]",
+        icon: "size-10",
+        "icon-sm": "size-8",
       },
     },
     defaultVariants: {

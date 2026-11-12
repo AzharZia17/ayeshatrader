@@ -1,285 +1,131 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import {
-  ShieldCheck,
-  CheckCircle2,
-  Sparkles,
-  Zap,
-  Flame,
-  AlertTriangle,
-  HelpCircle,
-  MessageCircle,
-} from "lucide-react";
-import {
-  BUSINESS_NAME,
-  getWhatsAppLink,
-} from "@/lib/constants";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+import type { Metadata } from "next";
+import { CONDUCTOR_INFO, FAQS, GAUGE_GUIDE, INSULATION_TABLE, VOLTAGE_TABLE } from "@/lib/technical";
+import { PageHeader } from "@/components/shared/PageHeader";
+import { DataTable } from "@/components/shared/DataTable";
+import { CtaBand } from "@/components/shared/CtaBand";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "Quality Standards & Cable Specifications",
+  title: "Quality & Technical Information",
   description:
-    "Learn about electrical wire quality, copper conductor purity, insulation standards, and wire gauge recommendations for residential and commercial installations.",
+    "Technical information on copper conductors, PVC insulation, voltage classes and wire size selection, plus answers to common questions about electrical cables.",
+  alternates: { canonical: "/quality" },
+  openGraph: { title: "Quality & Technical Information | Ayesha Traders", url: "/quality" },
 };
 
+function TableSection({ eyebrow, title, intro, children }: { eyebrow: string; title: string; intro: string; children: React.ReactNode }) {
+  return (
+    <section className="section-y border-t border-border first:border-t-0">
+      <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.8fr] lg:gap-16">
+        <div>
+          <p className="eyebrow">{eyebrow}</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight">{title}</h2>
+          <p className="mt-4 text-base leading-relaxed text-charcoal-muted">{intro}</p>
+        </div>
+        <div className="min-w-0">{children}</div>
+      </div>
+    </section>
+  );
+}
+
 export default function QualityPage() {
-  const wireGaugeGuide = [
-    {
-      gauge: "3/0.029 (1.0 mm²)",
-      currentRating: "Up to 10 Amperes",
-      recommendedUse:
-        "Ceiling lights, LED spotlights, exhaust fans, and decorative chandelier circuits.",
-      caution: "Not suitable for heavy heating loads or plug outlets.",
-    },
-    {
-      gauge: "7/0.029 (1.5 mm²)",
-      currentRating: "Up to 15 Amperes",
-      recommendedUse:
-        "General wall power socket points, TV displays, computer workstations, ceiling fans, and room lighting sub-circuits.",
-      caution: "Standard domestic bedroom and living area outlet wire.",
-    },
-    {
-      gauge: "7/0.036 (2.5 mm²)",
-      currentRating: "Up to 20 Amperes",
-      recommendedUse:
-        "Heavy kitchen sockets, microwave ovens, refrigerators, washing machines, and water pumps up to 1 HP.",
-      caution: "Recommended minimum for all dedicated kitchen lines.",
-    },
-    {
-      gauge: "7/0.044 (4.0 mm²)",
-      currentRating: "Up to 28 Amperes",
-      recommendedUse:
-        "1.0 Ton and 1.5 Ton Inverter Air Conditioners, electric geysers, room heaters, and iron outlets.",
-      caution: "Run unbroken direct runs from distribution board to AC unit.",
-    },
-    {
-      gauge: "7/0.052 (6.0 mm²)",
-      currentRating: "Up to 36 Amperes",
-      recommendedUse:
-        "2.0 Ton AC units, instant multi-point electric water heaters, and floor sub-distribution panels.",
-      caution: "Ideal for high-demand residential circuits.",
-    },
-    {
-      gauge: "7/0.064 (10.0 mm²)",
-      currentRating: "Up to 50 Amperes",
-      recommendedUse:
-        "Main supply line from electricity meter to Main Distribution Board (MDB) in single-phase houses.",
-      caution: "Essential for safeguarding the entire domestic installation.",
-    },
-  ];
-
-  const qualityPillars = [
-    {
-      icon: Sparkles,
-      title: "Electrolytic High-Conductivity Copper",
-      description:
-        "Quality starts with conductor purity. High-grade annealed copper offers minimal electrical resistance, preventing unwanted voltage drops and ensuring maximum energy efficiency.",
-    },
-    {
-      icon: Flame,
-      title: "Flame Retardant PVC Compound",
-      description:
-        "Grade-A PVC insulation designed with self-extinguishing flame-retardant properties. It restricts spark propagation and resists insulation cracking under temperature extremes.",
-    },
-    {
-      icon: Zap,
-      title: "Dielectric Voltage Endurance",
-      description:
-        "Tested to withstand required operating voltage classes (300/500V, 450/750V, and 600/1000V) without breakdown, preventing leakage currents and human shock hazards.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Full Conductor Dimension Tolerance",
-      description:
-        "Unlike substandard market cables with reduced copper strand thickness, our suppliers uphold genuine strand diameters for dependable ampacity.",
-    },
-  ];
-
-  const faqs = [
-    {
-      q: "Why is high copper purity essential in building wire?",
-      a: "Pure copper has extremely low electrical resistance. Substandard copper mixed with impurities or recycled scrap generates excessive heat when current flows through it. This heat wastes electricity, increases your monthly bills, and degrades the insulation over time, creating a severe fire hazard.",
-    },
-    {
-      q: "What does gauge naming like 3/0.029 or 7/0.036 mean?",
-      a: "In standard Pakistani wire specifications, the first number represents the number of copper strands, and the second number represents the diameter of each individual strand in inches. For instance, '7/0.029' means 7 strands of copper, each measuring 0.029 inches in diameter, totaling approximately 1.5 mm² cross-sectional area.",
-    },
-    {
-      q: "Which cable is recommended for deep well submersible pumps?",
-      a: "Submersible pumps require 3-core flat submersible cables manufactured with water-impervious PVC or rubber compounds. Regular flexible cables will allow water to permeate the insulation under continuous hydrostatic pressure, leading to motor burnout.",
-    },
-    {
-      q: "Can I use flexible wire for underground conduit wiring?",
-      a: "For underground conduits or direct burial, multi-core armoured cables (with steel wire armour) or rigid heavy-duty PVC conduit wires should be used. Flexible multi-core cables are primarily intended for indoor portable appliances and equipment hookups.",
-    },
-    {
-      q: "How can I check the price for my required wire coil quantity?",
-      a: "Because copper prices fluctuate with daily commodity market rates, we provide real-time quotations via WhatsApp or direct phone call. Simply contact us with your required gauge and coil count for an instant, competitive quote.",
-    },
-  ];
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
 
   return (
-    <div className="bg-white">
-      {/* Header */}
-      <section className="border-b border-[#E5E7EB] bg-[#F5F6F4] py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Technical &amp; Quality Standards"
-            title="Cable Quality &amp; Gauge Specifications"
-            subtitle="Understand the essential engineering factors behind dependable electrical cables — from conductor metallurgy and insulation compounds to proper wire gauge selection."
-            align="center"
-          />
-        </div>
-      </section>
+    <>
+      <PageHeader
+        crumbs={[{ label: "Home", href: "/" }, { label: "Quality" }]}
+        eyebrow="Quality & Technical"
+        title="Know your cable before you buy"
+        description="General technical information on conductors, insulation, voltage classes and size selection. It is a buying guide, not a certification statement."
+      />
 
-      {/* 4 Quality Pillars */}
-      <section className="py-16 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="The Quality Benchmark"
-            title="What Makes a Quality Electrical Cable?"
-            subtitle="Inspecting the four core attributes that distinguish premium electrical cables from dangerous substandard wires."
-            className="mb-12"
-          />
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {qualityPillars.map((p, i) => {
-              const Icon = p.icon;
-              return (
-                <Card
-                  key={i}
-                  className="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm transition-all hover:border-[#167346]/40 hover:shadow-md"
-                >
-                  <CardContent className="p-0 space-y-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#E8F5EE] text-[#167346]">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-base font-bold text-[#202522]">{p.title}</h3>
-                    <p className="text-xs leading-relaxed text-[#4B5563]">
-                      {p.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
+      <section className="section-y">
+        <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.8fr] lg:gap-16">
+          <div>
+            <p className="eyebrow">Copper Conductors</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">What carries the current</h2>
+          </div>
+          <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
+            {CONDUCTOR_INFO.map((b, i) => (
+              <div key={b.title} className={i === 0 ? "sm:col-span-2" : undefined}>
+                <h3 className="text-lg font-semibold tracking-tight">{b.title}</h3>
+                <p className="mt-2 text-[0.9375rem] leading-relaxed text-charcoal-muted">{b.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Wire Gauge Specifications Table */}
-      <section className="border-t border-[#E5E7EB] bg-[#F5F6F4] py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Application Guide"
-            title="Standard Wire Gauges &amp; Recommended Usage"
-            subtitle="Refer to this handy guide to match wire gauge specifications to common residential and commercial electrical loads."
-            className="mb-12"
-          />
+      <div className="bg-surface-gray">
+        <TableSection
+          eyebrow="Insulation Materials"
+          title="What surrounds the conductor"
+          intro="Insulation and sheathing keep conductors separated and protected. The materials below are the ones used across our range."
+        >
+          <DataTable table={INSULATION_TABLE} />
+        </TableSection>
+      </div>
 
-          <div className="overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white shadow-md">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs sm:text-sm">
-                <thead className="border-b border-[#E5E7EB] bg-[#202522] text-white">
-                  <tr>
-                    <th className="px-5 py-4 font-bold">Standard Gauge</th>
-                    <th className="px-5 py-4 font-bold">Current Capacity</th>
-                    <th className="px-5 py-4 font-bold">Recommended Usage</th>
-                    <th className="px-5 py-4 font-bold">Practical Advice</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-[#E5E7EB] text-[#202522]">
-                  {wireGaugeGuide.map((row, idx) => (
-                    <tr
-                      key={idx}
-                      className={idx % 2 === 0 ? "bg-white" : "bg-[#F9FAF8]"}
-                    >
-                      <td className="whitespace-nowrap px-5 py-4 font-bold text-[#167346]">
-                        {row.gauge}
-                      </td>
-                      <td className="whitespace-nowrap px-5 py-4 font-semibold text-[#4B5563]">
-                        {row.currentRating}
-                      </td>
-                      <td className="px-5 py-4 text-[#202522]">
-                        {row.recommendedUse}
-                      </td>
-                      <td className="px-5 py-4 text-xs text-[#6B7280]">
-                        {row.caution}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      <TableSection
+        eyebrow="Voltage Ratings"
+        title="Typical voltage classes"
+        intro="Voltage class tells you the system a cable type is generally made for."
+      >
+        <DataTable table={VOLTAGE_TABLE} />
+      </TableSection>
 
-            <div className="border-t border-[#E5E7EB] bg-[#E8F5EE] p-4 text-xs font-medium text-[#167346] flex items-center gap-2">
-              <CheckCircle2 className="h-4 w-4 shrink-0" />
-              <span>
-                Always consult a licensed electrician or electrical engineer to verify exact voltage drop calculations over long distances.
-              </span>
-            </div>
+      <div className="bg-surface-gray">
+        <TableSection
+          eyebrow="Wire Size Guide"
+          title="Choosing a wire size"
+          intro="A starting point for common applications. Always size cable for the actual load and installation."
+        >
+          <DataTable table={GAUGE_GUIDE} />
+        </TableSection>
+      </div>
+
+      <section className="section-y border-t border-border">
+        <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.8fr] lg:gap-16">
+          <div>
+            <p className="eyebrow">Notice</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">About certifications</h2>
           </div>
+          <p className="text-base leading-relaxed text-charcoal-muted">
+            This website does not claim that any product complies with a particular national or international standard.
+            If your project requires a specific standard, test report or manufacturer datasheet, ask us before ordering and
+            we will confirm what is available for the product you want.
+          </p>
         </div>
       </section>
 
-      {/* Quality FAQs using shadcn Accordion */}
-      <section className="bg-white py-16 md:py-20">
-        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Frequently Asked Questions"
-            title="Cable Quality &amp; Selection Insights"
-            subtitle="Answers to common questions regarding electrical cables, purity, and conduit installation."
-            className="mb-10"
-          />
-
-          <Accordion className="w-full space-y-3">
-            {faqs.map((faq, i) => (
-              <AccordionItem
-                key={i}
-                value={`item-${i}`}
-                className="rounded-xl border border-[#E5E7EB] px-5 py-2 data-[state=open]:border-[#167346]/40 data-[state=open]:bg-[#F9FAF8]"
-              >
-                <AccordionTrigger className="text-left text-sm font-bold text-[#202522] hover:text-[#167346]">
-                  {faq.q}
-                </AccordionTrigger>
-                <AccordionContent className="pt-2 text-xs leading-relaxed text-[#4B5563]">
-                  {faq.a}
-                </AccordionContent>
+      <section className="section-y border-t border-border bg-surface-gray">
+        <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.8fr] lg:gap-16">
+          <div>
+            <p className="eyebrow">FAQ</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Frequently asked questions</h2>
+          </div>
+          <Accordion>
+            {FAQS.map((f) => (
+              <AccordionItem key={f.question} value={f.question}>
+                <AccordionTrigger>{f.question}</AccordionTrigger>
+                <AccordionContent>{f.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-
-          {/* Direct WhatsApp Callout */}
-          <div className="mt-12 text-center">
-            <p className="text-sm text-[#4B5563] mb-4">
-              Have technical questions about load requirements or bulk coil specs?
-            </p>
-            <Button
-              asChild
-              className="rounded-full bg-[#167346] px-8 font-semibold text-white hover:bg-[#125d38]"
-            >
-              <a
-                href={getWhatsAppLink(
-                  "Hello Ayesha Traders! I have a question regarding cable specifications and wire gauges."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2"
-              >
-                <MessageCircle className="h-4 w-4" />
-                <span>Ask via WhatsApp</span>
-              </a>
-            </Button>
-          </div>
         </div>
       </section>
-    </div>
+
+      <CtaBand />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd).replace(/</g, "\\u003c") }} />
+    </>
   );
 }

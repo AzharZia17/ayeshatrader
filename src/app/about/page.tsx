@@ -1,229 +1,140 @@
-import { Metadata } from "next";
-import Image from "next/image";
+import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  ShieldCheck,
-  CheckCircle2,
-  MapPin,
-  Phone,
-  MessageCircle,
-  Zap,
-  Layers,
-  Scale,
-} from "lucide-react";
-import {
-  BUSINESS_NAME,
-  BUSINESS_CATEGORY,
-  BUSINESS_TAGLINE,
-  PHONE_1,
-  PHONE_2,
-  LOCATION,
-  getWhatsAppLink,
-} from "@/lib/constants";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight } from "lucide-react";
+import { CATEGORIES } from "@/lib/products";
+import { ADDRESS_FULL, BUSINESS_HOURS } from "@/lib/constants";
+import { PageHeader } from "@/components/shared/PageHeader";
+import { ProductImage } from "@/components/shared/ProductImage";
+import { CtaBand } from "@/components/shared/CtaBand";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `Learn about ${BUSINESS_NAME}, an electrical wires and cables supplier located at ${LOCATION}. Quality copper conductors, dependable service, and transparent specifications.`,
+  description:
+    "Ayesha Traders is an electrical wires and cables supplier in Gujranwala, Pakistan. Learn about our business, product range and customer commitments.",
+  alternates: { canonical: "/about" },
+  openGraph: { title: "About Us | Ayesha Traders", url: "/about" },
 };
 
+const commitments = [
+  { title: "Honest product information", body: "We describe products by what they are and how they are made, without unverified claims." },
+  { title: "Clear, current pricing", body: "We quote at current rates for the exact product, size and quantity, so there are no outdated price lists." },
+  { title: "Straight answers on sizes", body: "Tell us the application and we will help you find the right product and size, or tell you if we do not stock it." },
+  { title: "Accessible during shop hours", body: `Call or message us on WhatsApp, ${BUSINESS_HOURS}.` },
+];
+
 export default function AboutPage() {
-  const values = [
-    {
-      icon: Scale,
-      title: "Honest Gauge & Weight",
-      description:
-        "We believe trust is built on integrity. Our wires and cables adhere strictly to declared gauge specifications, strand counts, and standard weight guidelines.",
-    },
-    {
-      icon: ShieldCheck,
-      title: "Quality Conductor Standards",
-      description:
-        "Every batch focuses on high-conductivity electrolytic copper conductors that maintain low electrical resistance and prevent overheating.",
-    },
-    {
-      icon: Layers,
-      title: "Diverse Application Coverage",
-      description:
-        "Supplying solutions for domestic housing electrification, shop and commercial plaza conduit systems, agricultural tube wells, and heavy power feeders.",
-    },
-    {
-      icon: Phone,
-      title: "Direct & Responsive Service",
-      description:
-        "No complex bureaucracy. Contact us directly via phone or WhatsApp for quick pricing, order preparation, and collection from our Noshera Sansi location.",
-    },
-  ];
-
   return (
-    <div className="bg-white">
-      {/* Page Header */}
-      <section className="border-b border-[#E5E7EB] bg-[#F5F6F4] py-14 md:py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="About Us"
-            title={`About ${BUSINESS_NAME}`}
-            subtitle="Your trusted partner for electrical wires, flexible cables, and pure copper electrical solutions."
-            align="center"
+    <>
+      <PageHeader
+        crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
+        eyebrow="About Ayesha Traders"
+        title="An electrical cable supplier in Gujranwala"
+        description="We supply wires and cables to electricians, rewinding workshops, contractors and households."
+      />
+
+      {/* Overview */}
+      <section className="section-y">
+        <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <ProductImage
+            src="/images/products/pvc-building-wire.jpg"
+            alt="Coils of red, black, yellow and blue PVC building wire"
+            sizes="(max-width: 1024px) 100vw, 560px"
+            ratio="aspect-[4/5]"
+            className="mx-auto w-full max-w-md rounded-lg border border-border"
+          />
+          <div>
+            <p className="eyebrow">Company Overview</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">One place for the cable your job needs</h2>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-charcoal-muted sm:text-lg">
+              <p>
+                Ayesha Traders is an electrical wires and cables supplier located at {ADDRESS_FULL}. Our shop serves
+                people who buy cable regularly and want a supplier who understands the products.
+              </p>
+              <p>
+                We keep our range focused: wire and cable with copper conductors, from household building wire to
+                multi-core power cables.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Business focus */}
+      <section className="section-y border-t border-border bg-surface-gray">
+        <div className="container-page grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div className="order-2 lg:order-1">
+            <p className="eyebrow">Business Focus</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Supply, not complication</h2>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-charcoal-muted sm:text-lg">
+              <p>
+                Our focus is simple: stock the cables our customers ask for, quote fairly, and make ordering easy. You
+                can browse the catalog online, then confirm price and availability by phone or WhatsApp.
+              </p>
+              <p>
+                We serve electricians fitting out homes and shops, workshops rewinding motors, farmers installing pumps,
+                and contractors buying feeder cable for larger projects.
+              </p>
+            </div>
+          </div>
+          <ProductImage
+            src="/images/products/submersible-flat-cable.jpg"
+            alt="Coil of blue flat submersible cable"
+            sizes="(max-width: 1024px) 100vw, 560px"
+            className="order-1 mx-auto w-full max-w-md rounded-lg border border-border lg:order-2"
           />
         </div>
       </section>
 
-      {/* Introduction Story / Overview */}
-      <section className="py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="space-y-6 lg:col-span-7">
-              <div className="inline-flex items-center gap-2 rounded-full bg-[#E8F5EE] px-3.5 py-1 text-xs font-semibold text-[#167346]">
-                <Zap className="h-3.5 w-3.5" />
-                <span>Electrical Cable Specialist</span>
-              </div>
-
-              <h2 className="text-3xl font-extrabold tracking-tight text-[#202522] sm:text-4xl">
-                Dedicated to Safety, Electrical Reliability &amp; Genuine Materials
-              </h2>
-
-              <p className="text-base leading-relaxed text-[#4B5563]">
-                <strong className="text-[#202522]">{BUSINESS_NAME}</strong> operates as an electrical wires and cables supplier serving electricians, building contractors, agricultural pump operators, and private homeowners across Gujranwala and surrounding areas.
-              </p>
-
-              <p className="text-base leading-relaxed text-[#4B5563]">
-                Electrical wiring represents the invisible backbone of any structure. Substandard conductors and thin insulation increase power consumption, cause appliance breakdowns, and create extreme fire hazards. At {BUSINESS_NAME}, our primary objective is to make genuine, high-conductivity copper wires and resilient PVC cables easily accessible with straightforward pricing and honest advice.
-              </p>
-
-              <div className="rounded-2xl border border-[#E5E7EB] bg-[#F5F6F4] p-5 space-y-3">
-                <h4 className="text-sm font-bold text-[#202522]">
-                  Our Product Supply Focus:
-                </h4>
-                <div className="grid grid-cols-1 gap-2 text-xs text-[#202522] sm:grid-cols-2">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#167346]" />
-                    <span>Single Core PVC Conduit Wires</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#167346]" />
-                    <span>Multi-Core Flexible Appliance Cables</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#167346]" />
-                    <span>3-Core Flat Submersible Pump Cables</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 text-[#167346]" />
-                    <span>High-Purity Copper Earthing &amp; Winding Wire</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side Image Card */}
-            <div className="lg:col-span-5">
-              <div className="relative overflow-hidden rounded-3xl border border-[#E5E7EB] bg-[#F5F6F4] p-4 shadow-xl">
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
-                  <Image
-                    src="/images/hero-building-wire.jpg"
-                    alt="Ayesha Traders Electrical Cables"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 500px"
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="mt-4 rounded-xl bg-white p-4 border border-[#E5E7EB]">
-                  <div className="flex items-center gap-2 text-xs text-[#167346] font-bold uppercase tracking-wider">
-                    <MapPin className="h-4 w-4" />
-                    <span>Store Location</span>
-                  </div>
-                  <p className="mt-1 text-sm font-semibold text-[#202522]">
-                    {LOCATION}
-                  </p>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    Near Galla Ismail, Bat Tozi Wala, Noshera Sansi
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Core Principles */}
-      <section className="border-t border-[#E5E7EB] bg-[#F5F6F4] py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <SectionHeader
-            badge="Our Commitments"
-            title="The Principles That Guide Our Supply"
-            subtitle="Transparent specifications, dependable copper purity, and fair prices for every customer."
-            className="mb-14"
+      {/* Product range */}
+      <section className="section-y">
+        <div className="container-page grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
+          <ProductImage
+            src="/images/products/unarmoured-power-cable.jpg"
+            alt="Multi-core power cable with red, yellow, blue and black cores"
+            sizes="(max-width: 1024px) 100vw, 560px"
+            className="mx-auto w-full max-w-md rounded-lg border border-border"
           />
-
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {values.map((v, i) => {
-              const Icon = v.icon;
-              return (
-                <Card
-                  key={i}
-                  className="rounded-2xl border border-[#E5E7EB] bg-white p-6 shadow-sm"
-                >
-                  <CardContent className="p-0 space-y-3">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#E8F5EE] text-[#167346]">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="text-lg font-bold text-[#202522]">{v.title}</h3>
-                    <p className="text-xs leading-relaxed text-[#4B5563]">
-                      {v.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              );
-            })}
+          <div>
+            <p className="eyebrow">Product Range</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">Four product groups</h2>
+            <ul className="mt-8 divide-y divide-border border-y border-border">
+              {CATEGORIES.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/products?category=${c.slug}`} className="group flex items-start justify-between gap-6 py-5">
+                    <span>
+                      <span className="block text-lg font-semibold group-hover:text-brand">{c.name}</span>
+                      <span className="mt-1 block text-[0.9375rem] text-charcoal-muted">{c.description}</span>
+                    </span>
+                    <ArrowRight aria-hidden className="mt-1.5 size-4 shrink-0 text-charcoal-muted group-hover:text-brand" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <Button asChild className="mt-8" variant="outline">
+              <Link href="/products">View full catalog</Link>
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Contact & Location Strip */}
-      <section className="bg-white py-16">
-        <div className="mx-auto max-w-5xl px-4 text-center sm:px-6 lg:px-8">
-          <div className="rounded-3xl border border-[#E5E7EB] bg-[#F5F6F4] p-8 shadow-sm md:p-12">
-            <h3 className="text-2xl font-bold text-[#202522]">
-              Visit or Contact Ayesha Traders
-            </h3>
-            <p className="mt-2 text-sm text-[#4B5563]">
-              Have questions regarding our wire stock, coil availability, or wholesale pricing?
-            </p>
-
-            <div className="mt-6 flex flex-wrap items-center justify-center gap-4">
-              <Button
-                asChild
-                className="h-11 rounded-full bg-[#167346] px-6 font-semibold text-white hover:bg-[#125d38]"
-              >
-                <a
-                  href={getWhatsAppLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  <span>Message on WhatsApp</span>
-                </a>
-              </Button>
-
-              <Button
-                asChild
-                variant="outline"
-                className="h-11 rounded-full border-2 border-[#167346] px-6 font-semibold text-[#167346] hover:bg-[#E8F5EE]"
-              >
-                <Link href="/contact" className="inline-flex items-center gap-2">
-                  <span>Contact Page &amp; Location</span>
-                </Link>
-              </Button>
-            </div>
-          </div>
+      {/* Commitments */}
+      <section className="section-y border-t border-border bg-surface-gray">
+        <div className="container-page">
+          <p className="eyebrow">Customer Commitments</p>
+          <h2 className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">How we deal with customers</h2>
+          <ol className="mt-12 grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+            {commitments.map((c, i) => (
+              <li key={c.title} className="border-t-2 border-copper pt-5">
+                <span className="text-sm font-semibold text-copper-deep tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="mt-3 text-lg font-semibold tracking-tight">{c.title}</h3>
+                <p className="mt-2 text-[0.9375rem] leading-relaxed text-charcoal-muted">{c.body}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
-    </div>
+      <CtaBand />
+    </>
   );
 }
-
