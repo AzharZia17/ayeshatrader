@@ -22,8 +22,14 @@ export function PageHeader({
 }) {
   return (
     <section className="line-pattern relative overflow-hidden bg-brand-hover text-white">
-      <div className="container-page relative grid items-center gap-10 py-14 lg:grid-cols-[1.4fr_1fr] lg:py-20">
-        <div className="hero-in">
+      {image && (
+        <div className="absolute inset-y-0 right-0 hidden w-[40%] overflow-hidden bg-white lg:block">
+          <Image src={image.src} alt={image.alt} fill priority sizes="40vw" className="object-cover object-[center_40%] mix-blend-multiply" />
+          <div aria-hidden className="absolute inset-y-0 left-0 w-1.5 bg-white/25" />
+        </div>
+      )}
+      <div className="container-page relative py-14 lg:py-24">
+        <div className="hero-in lg:max-w-[52%]">
           <nav aria-label="Breadcrumb">
             <ol className="flex flex-wrap items-center gap-1.5 text-sm text-white/65">
               {crumbs.map((c, i) => (
@@ -51,14 +57,6 @@ export function PageHeader({
           <h1 className="mt-4 max-w-2xl text-4xl leading-[1.05] font-semibold tracking-tight text-white sm:text-6xl">{title}</h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/75">{description}</p>
         </div>
-        {image && (
-          <div className="relative hidden justify-self-end lg:block">
-            <div aria-hidden className="absolute inset-0 translate-x-4 translate-y-4 rounded-lg border border-white/30" />
-            <div className="relative h-72 w-[22rem] overflow-hidden rounded-lg bg-white">
-              <Image src={image.src} alt={image.alt} fill sizes="352px" className="object-cover mix-blend-multiply" />
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
