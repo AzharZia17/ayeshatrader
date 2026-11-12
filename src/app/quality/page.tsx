@@ -45,6 +45,7 @@ export default function QualityPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Quality" }]}
         eyebrow="Quality & Technical"
         title="Technical information"
+        image={{ src: "/images/products/unarmoured-power-cable.jpg", alt: "Multi-core power cable" }}
         description="Conductors, insulation, voltage classes and size selection. A buying guide, not a certification."
       />
 

@@ -15,7 +15,7 @@ export function SectionHeading({ eyebrow, title, description, as: Tag = "h2", cl
     <div className={cn("flex flex-col justify-between gap-6 md:flex-row md:items-end", className)}>
       <div className="max-w-2xl">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <Tag className={cn("text-3xl font-semibold tracking-tight sm:text-4xl", eyebrow && "mt-3")}>{title}</Tag>
+        <Tag className={cn("text-3xl font-semibold tracking-tight sm:text-5xl", eyebrow && "mt-3")}>{title}</Tag>
         {description && <p className="mt-4 text-base leading-relaxed text-charcoal-muted sm:text-lg">{description}</p>}
       </div>
       {action}

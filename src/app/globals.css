@@ -153,14 +153,32 @@
 }
 
 @keyframes rise-in {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: none; }
 }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Fine diagonal cable-strand pattern for dark sections */
+.line-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M-2 2 L2 -2 M0 14 L14 0 M12 16 L16 12' stroke='white' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .hero-in > * { animation: rise-in 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
-  .hero-in > *:nth-child(2) { animation-delay: 0.06s; }
-  .hero-in > *:nth-child(3) { animation-delay: 0.12s; }
-  .hero-in > *:nth-child(4) { animation-delay: 0.18s; }
-  .hero-in > *:nth-child(5) { animation-delay: 0.24s; }
-  .hero-in > *:nth-child(6) { animation-delay: 0.3s; }
+  .hero-in > * { animation: rise-in 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+  .hero-in > *:nth-child(2) { animation-delay: 0.08s; }
+  .hero-in > *:nth-child(3) { animation-delay: 0.16s; }
+  .hero-in > *:nth-child(4) { animation-delay: 0.24s; }
+  .hero-in > *:nth-child(5) { animation-delay: 0.32s; }
+  .marquee-track { animation: marquee 38s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: rise-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
 }

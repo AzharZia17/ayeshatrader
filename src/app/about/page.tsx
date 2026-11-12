@@ -28,6 +28,7 @@ export default function AboutPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "About" }]}
         eyebrow="About Us"
         title="Electrical cable supplier, Gujranwala"
+        image={{ src: "/images/products/pvc-building-wire.jpg", alt: "Coils of PVC building wire" }}
         description="We supply wires and cables to electricians, workshops and contractors."
       />
 

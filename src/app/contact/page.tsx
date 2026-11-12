@@ -33,6 +33,7 @@ export default function ContactPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         eyebrow="Contact Sales"
         title="Request a quotation"
+        image={{ src: "/images/products/submersible-flat-cable.jpg", alt: "Blue flat submersible cable" }}
         description="Call, message on WhatsApp, or send the form below."
       />
       <section className="section-y">

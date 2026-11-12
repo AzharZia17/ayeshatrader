@@ -19,6 +19,7 @@ export default function ProductsPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Products" }]}
         eyebrow="Product Catalog"
         title="Products"
+        image={{ src: "/images/products/flexible-multicore-cable.jpg", alt: "Black flexible multi-core cable" }}
         description="Search by name, size or application. Request a price for the size you need."
       />
       <section className="py-10 lg:py-14">

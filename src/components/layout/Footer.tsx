@@ -19,6 +19,11 @@ const link = "text-sm text-white/70 transition-colors hover:text-white";
 export function Footer() {
   return (
     <footer className="bg-brand-hover text-white">
+      <div className="border-b border-white/10">
+        <p className="container-page py-12 text-3xl leading-tight font-semibold tracking-tight text-white sm:text-5xl">
+          Reliable Cables. <span className="text-[#E9C4CF]">Trusted Quality.</span>
+        </p>
+      </div>
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
         <div className="max-w-xs">
           <Logo inverse />
