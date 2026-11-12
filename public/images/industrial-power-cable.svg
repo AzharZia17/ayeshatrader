@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9FAF8" />
+      <stop offset="100%" stop-color="#EEF2EF" />
+    </linearGradient>
+    <linearGradient id="heavyJacket" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#374151" />
+      <stop offset="40%" stop-color="#1F2937" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    <linearGradient id="steelArmour" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#94A3B8" />
+      <stop offset="50%" stop-color="#E2E8F0" />
+      <stop offset="100%" stop-color="#64748B" />
+    </linearGradient>
+    <linearGradient id="coreRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#B91C1C" />
+    </linearGradient>
+    <linearGradient id="coreYellow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FACC15" />
+      <stop offset="100%" stop-color="#A16207" />
+    </linearGradient>
+    <linearGradient id="coreBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="coreBlack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4B5563" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="copperStrands" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDBA74" />
+      <stop offset="50%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#9A3412" />
+    </linearGradient>
+    <filter id="pwrShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#cardBg)" rx="16" />
+
+  <!-- Heavy Duty Industrial Power Cable Cutaway -->
+  <g transform="translate(80, 150)" filter="url(#pwrShadow)">
+    <!-- Stage 1: Outer Heavy Black Sheath -->
+    <path d="M 30,170 C 90,130 150,110 240,100 L 244,152 C 170,160 110,180 50,220 Z" fill="url(#heavyJacket)" />
+    <ellipse cx="240" cy="126" rx="14" ry="26" fill="#374151" />
+
+    <!-- Stage 2: Steel Wire Armour (SWA) -->
+    <path d="M 240,105 C 280,101 310,99 340,97 L 344,147 C 310,149 280,151 242,153 Z" fill="url(#steelArmour)" />
+    <!-- Steel Wire hatching -->
+    <g opacity="0.6" stroke="#475569" stroke-width="2">
+      <line x1="250" y1="104" x2="252" y2="152" />
+      <line x1="270" y1="102" x2="272" y2="150" />
+      <line x1="290" y1="101" x2="292" y2="149" />
+      <line x1="310" y1="99" x2="312" y2="148" />
+      <line x1="330" y1="98" x2="332" y2="147" />
+    </g>
+
+    <!-- Stage 3: Inner Bedding -->
+    <path d="M 340,102 C 370,100 390,99 410,98 L 413,142 C 390,143 370,144 342,146 Z" fill="#E2E8F0" />
+
+    <!-- Stage 4: 4-Core Conductors Fanning Out -->
+    <!-- Core 1 (Red) -->
+    <path d="M 410,102 C 430,95 450,88 470,82 L 472,96 C 452,102 432,108 412,114 Z" fill="url(#coreRed)" />
+    <path d="M 470,82 L 495,75" fill="none" stroke="url(#copperStrands)" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Core 2 (Yellow) -->
+    <path d="M 411,114 C 435,110 455,106 475,102 L 476,116 C 456,120 436,124 412,126 Z" fill="url(#coreYellow)" />
+    <path d="M 475,102 L 500,97" fill="none" stroke="url(#copperStrands)" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Core 3 (Blue) -->
+    <path d="M 412,126 C 435,128 455,130 475,132 L 476,146 C 456,144 436,142 412,138 Z" fill="url(#coreBlue)" />
+    <path d="M 475,132 L 500,135" fill="none" stroke="url(#copperStrands)" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Core 4 (Black) -->
+    <path d="M 412,138 C 430,146 450,154 470,162 L 472,176 C 452,168 432,160 412,148 Z" fill="url(#coreBlack)" />
+    <path d="M 470,162 L 495,170" fill="none" stroke="url(#copperStrands)" stroke-width="8" stroke-linecap="round" />
+  </g>
+
+  <!-- Spec Tag -->
+  <g transform="translate(40, 40)">
+    <rect width="140" height="34" rx="8" fill="#167346" />
+    <text x="70" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">ARMOURED POWER</text>
+  </g>
+  <g transform="translate(430, 40)">
+    <rect width="130" height="34" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+    <text x="495" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#202522" text-anchor="middle">600 / 1000 V</text>
+  </g>
+</svg>
+

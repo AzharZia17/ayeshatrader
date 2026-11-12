@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9FAF8" />
+      <stop offset="100%" stop-color="#EEF2EF" />
+    </linearGradient>
+    <linearGradient id="redPvc" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EF4444" />
+      <stop offset="40%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#991B1B" />
+    </linearGradient>
+    <linearGradient id="copperStrands" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDBA74" />
+      <stop offset="30%" stop-color="#EA580C" />
+      <stop offset="70%" stop-color="#C2410C" />
+      <stop offset="100%" stop-color="#7C2D12" />
+    </linearGradient>
+    <filter id="pvcShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.14" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#cardBg)" rx="16" />
+
+  <!-- Technical Wire Coil Geometry -->
+  <g transform="translate(300, 240)" filter="url(#pvcShadow)">
+    <!-- Coil Rings Stack -->
+    <ellipse cx="0" cy="50" rx="190" ry="75" fill="none" stroke="url(#redPvc)" stroke-width="26" opacity="0.8" />
+    <ellipse cx="0" cy="30" rx="180" ry="70" fill="none" stroke="url(#redPvc)" stroke-width="26" opacity="0.9" />
+    <ellipse cx="0" cy="10" rx="170" ry="65" fill="none" stroke="url(#redPvc)" stroke-width="26" />
+    <ellipse cx="0" cy="-10" rx="160" ry="60" fill="none" stroke="url(#redPvc)" stroke-width="26" />
+    <ellipse cx="0" cy="-30" rx="150" ry="55" fill="none" stroke="url(#redPvc)" stroke-width="26" />
+
+    <!-- Stripped End Extending Up & Right -->
+    <path d="M 80,-70 Q 150,-100 210,-70" fill="none" stroke="url(#redPvc)" stroke-width="24" stroke-linecap="round" />
+    
+    <!-- Exposed Copper Strands at Tip -->
+    <path d="M 210,-70 Q 240,-55 255,-40" fill="none" stroke="url(#copperStrands)" stroke-width="14" stroke-linecap="round" />
+    <!-- Individual shiny copper strands tips -->
+    <circle cx="255" cy="-40" r="7" fill="url(#copperStrands)" stroke="#FFF" stroke-width="1" />
+    <circle cx="248" cy="-34" r="5" fill="url(#copperStrands)" stroke="#FFF" stroke-width="0.8" />
+    <circle cx="260" cy="-46" r="4" fill="url(#copperStrands)" stroke="#FFF" stroke-width="0.8" />
+  </g>
+
+  <!-- Spec Tag -->
+  <g transform="translate(40, 40)">
+    <rect width="130" height="34" rx="8" fill="#167346" />
+    <text x="65" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">PVC CONDUIT</text>
+  </g>
+  <g transform="translate(430, 40)">
+    <rect width="130" height="34" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+    <text x="495" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#202522" text-anchor="middle">450 / 750 V</text>
+  </g>
+</svg>
+

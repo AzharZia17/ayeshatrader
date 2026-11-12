@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5F6F4" />
+      <stop offset="50%" stop-color="#EBF0EC" />
+      <stop offset="100%" stop-color="#E2ECE6" />
+    </linearGradient>
+
+    <!-- Copper Metallic Gradients -->
+    <linearGradient id="copperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E28743" />
+      <stop offset="25%" stop-color="#F39C12" />
+      <stop offset="50%" stop-color="#FCE1B6" />
+      <stop offset="75%" stop-color="#D35400" />
+      <stop offset="100%" stop-color="#A04000" />
+    </linearGradient>
+
+    <linearGradient id="brightCopper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F8B179" />
+      <stop offset="40%" stop-color="#DE7A22" />
+      <stop offset="70%" stop-color="#B85D19" />
+      <stop offset="100%" stop-color="#783407" />
+    </linearGradient>
+
+    <!-- Sheath Gradients -->
+    <linearGradient id="brandGreenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0E4B2E" />
+      <stop offset="40%" stop-color="#167346" />
+      <stop offset="70%" stop-color="#1E8252" />
+      <stop offset="100%" stop-color="#0B3E25" />
+    </linearGradient>
+
+    <linearGradient id="charcoalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3A403C" />
+      <stop offset="50%" stop-color="#202522" />
+      <stop offset="100%" stop-color="#141816" />
+    </linearGradient>
+
+    <linearGradient id="redCore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F87171" />
+      <stop offset="50%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#991B1B" />
+    </linearGradient>
+
+    <linearGradient id="blueCore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#60A5FA" />
+      <stop offset="50%" stop-color="#2563EB" />
+      <stop offset="100%" stop-color="#1E40AF" />
+    </linearGradient>
+
+    <linearGradient id="yellowCore" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="50%" stop-color="#EAB308" />
+      <stop offset="100%" stop-color="#A16207" />
+    </linearGradient>
+
+    <linearGradient id="whiteSheath" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="60%" stop-color="#E5E7EB" />
+      <stop offset="100%" stop-color="#9CA3AF" />
+    </linearGradient>
+
+    <!-- Drop Shadows -->
+    <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.18" />
+    </filter>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="800" height="600" rx="24" fill="url(#bgGrad)" />
+
+  <!-- Subtle Blueprint Tech Grid in background -->
+  <g opacity="0.15" stroke="#167346" stroke-width="1">
+    <path d="M 0,100 L 800,100 M 0,200 L 800,200 M 0,300 L 800,300 M 0,400 L 800,400 M 0,500 L 800,500" stroke-dasharray="4,8" />
+    <path d="M 100,0 L 100,600 M 200,0 L 200,600 M 300,0 L 300,600 M 400,0 L 400,600 M 500,0 L 500,600 M 600,0 L 600,600 M 700,0 L 700,600" stroke-dasharray="4,8" />
+    <!-- Circular Technical Marks -->
+    <circle cx="400" cy="300" r="220" fill="none" stroke-width="1.5" stroke-dasharray="8,6" />
+    <circle cx="400" cy="300" r="140" fill="none" stroke-width="1" />
+  </g>
+
+  <!-- Decorative Tech Circles Behind -->
+  <circle cx="560" cy="180" r="120" fill="#167346" opacity="0.08" filter="url(#softGlow)" />
+  <circle cx="200" cy="420" r="150" fill="#D35400" opacity="0.06" filter="url(#softGlow)" />
+
+  <!-- MAIN CABLE SPOOL & BUNDLE (ILLUSTRATION) -->
+  <g filter="url(#shadow)">
+    <!-- Base Cable Coil Shadow / Outer Ring -->
+    <ellipse cx="400" cy="390" rx="300" ry="110" fill="none" stroke="url(#charcoalGrad)" stroke-width="38" opacity="0.9" />
+    <ellipse cx="400" cy="370" rx="280" ry="100" fill="none" stroke="url(#brandGreenGrad)" stroke-width="32" />
+    <ellipse cx="400" cy="350" rx="260" ry="90" fill="none" stroke="url(#charcoalGrad)" stroke-width="28" />
+    <ellipse cx="400" cy="330" rx="230" ry="80" fill="none" stroke="url(#redCore)" stroke-width="24" />
+    <ellipse cx="400" cy="315" rx="205" ry="70" fill="none" stroke="url(#blueCore)" stroke-width="20" />
+    <ellipse cx="400" cy="300" rx="175" ry="60" fill="none" stroke="url(#yellowCore)" stroke-width="18" />
+  </g>
+
+  <!-- FOREGROUND: STRIPPED INDUSTRIAL CABLE CUTAWAY (PREMIUM REALISTIC DETAIL) -->
+  <g transform="translate(140, 110)" filter="url(#shadow)">
+    <!-- Main Outer Jacket (Deep Charcoal Industrial) -->
+    <path d="M 50,280 C 120,230 200,200 350,180 L 370,225 C 230,245 150,275 80,330 Z" fill="url(#charcoalGrad)" />
+    
+    <!-- Outer Sheath Lip / Edge -->
+    <ellipse cx="360" cy="202" rx="18" ry="24" fill="#3A403C" transform="rotate(-15, 360, 202)" />
+
+    <!-- Bedding / Inner Armour Layer -->
+    <path d="M 360,185 C 410,180 440,178 470,175 L 476,210 C 440,214 410,216 366,220 Z" fill="url(#whiteSheath)" />
+
+    <!-- Red Insulated Conductor Core -->
+    <path d="M 470,175 C 500,170 520,165 540,158 L 544,180 C 522,186 500,190 472,194 Z" fill="url(#redCore)" />
+    <!-- Stripped Copper Strands inside Red Wire -->
+    <path d="M 540,158 C 570,150 595,145 615,140 L 618,155 C 596,160 572,165 544,172 Z" fill="url(#brightCopper)" />
+    <!-- Individual shiny copper strands tips -->
+    <circle cx="616" cy="147" r="8" fill="url(#copperGrad)" stroke="#FFF" stroke-width="0.75" />
+
+    <!-- Blue Insulated Conductor Core -->
+    <path d="M 473,190 C 505,188 535,185 558,180 L 560,202 C 535,206 505,209 475,210 Z" fill="url(#blueCore)" />
+    <!-- Stripped Copper Strands inside Blue Wire -->
+    <path d="M 558,180 C 585,176 610,172 630,168 L 632,183 C 610,187 585,191 560,195 Z" fill="url(#brightCopper)" />
+    <circle cx="631" cy="175" r="8" fill="url(#copperGrad)" stroke="#FFF" stroke-width="0.75" />
+
+    <!-- Yellow / Earth Insulated Conductor Core -->
+    <path d="M 470,205 C 495,207 520,208 545,206 L 546,226 C 520,228 495,227 468,223 Z" fill="url(#yellowCore)" />
+    <!-- Green Earth Stripe -->
+    <path d="M 471,211 C 495,213 520,214 545,212 L 545,218 C 520,220 495,219 470,217 Z" fill="#167346" />
+    <!-- Stripped Copper Strands inside Yellow/Green Wire -->
+    <path d="M 545,206 C 570,204 595,200 618,196 L 620,211 C 595,215 570,219 546,221 Z" fill="url(#brightCopper)" />
+    <circle cx="619" cy="203" r="8" fill="url(#copperGrad)" stroke="#FFF" stroke-width="0.75" />
+  </g>
+
+  <!-- FLOATING SPECIFICATION BADGE CARD (Clean, Professional, Trust-inspiring) -->
+  <g transform="translate(60, 60)" filter="url(#shadow)">
+    <!-- Card Base -->
+    <rect width="250" height="92" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+    <!-- Green accent bar -->
+    <rect x="0" y="0" width="8" height="92" rx="4" fill="#167346" />
+    <!-- Icon Circle -->
+    <circle cx="44" cy="46" r="22" fill="#E8F5EE" />
+    <path d="M 44,34 L 44,58 M 32,46 L 56,46" stroke="#167346" stroke-width="3" stroke-linecap="round" />
+    <circle cx="44" cy="46" r="14" fill="none" stroke="#167346" stroke-width="2.5" />
+    <!-- Badge Text -->
+    <text x="76" y="38" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#167346" letter-spacing="1">100% PURE COPPER</text>
+    <text x="76" y="57" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#202522">Electrolytic Grade</text>
+    <text x="76" y="74" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#6B7280">High Conductivity &amp; Safety</text>
+  </g>
+
+  <!-- SECOND BADGE CARD (Bottom Right) -->
+  <g transform="translate(480, 440)" filter="url(#shadow)">
+    <rect width="260" height="96" rx="16" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+    <rect x="0" y="0" width="8" height="96" rx="4" fill="#167346" />
+    <!-- Icon Circle -->
+    <circle cx="44" cy="48" r="22" fill="#E8F5EE" />
+    <!-- Shield Check Icon -->
+    <path d="M 44,34 L 56,39 C 56,50 44,59 44,62 C 44,59 32,50 32,39 Z" fill="none" stroke="#167346" stroke-width="2.5" stroke-linejoin="round" />
+    <path d="M 39,47 L 43,51 L 50,42" fill="none" stroke="#167346" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+    <!-- Text -->
+    <text x="76" y="38" font-family="system-ui, sans-serif" font-size="11" font-weight="700" fill="#167346" letter-spacing="1">VERIFIED SPECS</text>
+    <text x="76" y="58" font-family="system-ui, sans-serif" font-size="15" font-weight="800" fill="#202522">Industrial &amp; Domestic</text>
+    <text x="76" y="76" font-family="system-ui, sans-serif" font-size="11" font-weight="500" fill="#6B7280">Complete Range Available</text>
+  </g>
+</svg>
+

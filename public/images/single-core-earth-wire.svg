@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9FAF8" />
+      <stop offset="100%" stop-color="#EEF2EF" />
+    </linearGradient>
+    <linearGradient id="greenEarth" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#22C55E" />
+      <stop offset="50%" stop-color="#16A34A" />
+      <stop offset="100%" stop-color="#15803D" />
+    </linearGradient>
+    <linearGradient id="copperStrands" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDBA74" />
+      <stop offset="50%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#9A3412" />
+    </linearGradient>
+    <filter id="earthShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.14" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#cardBg)" rx="16" />
+
+  <!-- Green Earth Wire Coil -->
+  <g transform="translate(300, 240)" filter="url(#earthShadow)">
+    <ellipse cx="0" cy="40" rx="180" ry="70" fill="none" stroke="url(#greenEarth)" stroke-width="24" opacity="0.8" />
+    <ellipse cx="0" cy="20" rx="170" ry="65" fill="none" stroke="url(#greenEarth)" stroke-width="24" opacity="0.9" />
+    <ellipse cx="0" cy="0" rx="160" ry="60" fill="none" stroke="url(#greenEarth)" stroke-width="24" />
+    <ellipse cx="0" cy="-20" rx="150" ry="55" fill="none" stroke="url(#greenEarth)" stroke-width="24" />
+
+    <!-- Yellow Spiral Stripe Details -->
+    <path d="M -140,-20 Q -100,-40 -60,-20" fill="none" stroke="#FACC15" stroke-width="5" />
+    <path d="M 60,-20 Q 100,-40 140,-20" fill="none" stroke="#FACC15" stroke-width="5" />
+
+    <!-- Stripped End Pointing Out -->
+    <path d="M 70,-60 Q 140,-90 200,-60" fill="none" stroke="url(#greenEarth)" stroke-width="22" stroke-linecap="round" />
+    <!-- Heavy Bare Stranded Copper Conductor -->
+    <path d="M 200,-60 Q 230,-45 255,-35" fill="none" stroke="url(#copperStrands)" stroke-width="16" stroke-linecap="round" />
+    <circle cx="255" cy="-35" r="8" fill="url(#copperStrands)" stroke="#FFF" stroke-width="1" />
+  </g>
+
+  <!-- Spec Tag -->
+  <g transform="translate(40, 40)">
+    <rect width="140" height="34" rx="8" fill="#167346" />
+    <text x="70" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">EARTHING WIRE</text>
+  </g>
+  <g transform="translate(430, 40)">
+    <rect width="130" height="34" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+    <text x="495" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#202522" text-anchor="middle">PURE COPPER</text>
+  </g>
+</svg>
+

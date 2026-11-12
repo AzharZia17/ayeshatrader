@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F9FAF8" />
+      <stop offset="100%" stop-color="#EEF2EF" />
+    </linearGradient>
+    <linearGradient id="enamelCopper" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7C2D12" />
+      <stop offset="30%" stop-color="#C2410C" />
+      <stop offset="50%" stop-color="#FDBA74" />
+      <stop offset="70%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#7C2D12" />
+    </linearGradient>
+    <linearGradient id="spoolFlange" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#374151" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="spoolShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.16" />
+    </filter>
+  </defs>
+
+  <rect width="600" height="450" fill="url(#cardBg)" rx="16" />
+
+  <!-- Industrial Winding Wire Spool -->
+  <g transform="translate(300, 220)" filter="url(#spoolShadow)">
+    <!-- Back Spool Flange -->
+    <ellipse cx="0" cy="-60" rx="140" ry="45" fill="url(#spoolFlange)" />
+    
+    <!-- Copper Wire Wound Cylinder Body -->
+    <rect x="-110" y="-60" width="220" height="130" fill="url(#enamelCopper)" />
+    
+    <!-- Fine Wire Texture Lines on Spool -->
+    <g opacity="0.4" stroke="#FFF" stroke-width="1">
+      <line x1="-110" y1="-40" x2="110" y2="-40" />
+      <line x1="-110" y1="-20" x2="110" y2="-20" />
+      <line x1="-110" y1="0" x2="110" y2="0" />
+      <line x1="-110" y1="20" x2="110" y2="20" />
+      <line x1="-110" y1="40" x2="110" y2="40" />
+    </g>
+
+    <!-- Front Spool Flange -->
+    <ellipse cx="0" cy="70" rx="140" ry="45" fill="url(#spoolFlange)" />
+    <!-- Center Hole -->
+    <ellipse cx="0" cy="70" rx="40" ry="14" fill="#030712" />
+
+    <!-- Unwound Wire Strand Swirling Out -->
+    <path d="M 110,10 C 180,40 220,10 240,-40 C 250,-70 230,-100 200,-110" fill="none" stroke="url(#enamelCopper)" stroke-width="5" stroke-linecap="round" />
+  </g>
+
+  <!-- Spec Tag -->
+  <g transform="translate(40, 40)">
+    <rect width="145" height="34" rx="8" fill="#167346" />
+    <text x="72" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#FFFFFF" text-anchor="middle">COPPER WINDING</text>
+  </g>
+  <g transform="translate(430, 40)">
+    <rect width="130" height="34" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1.5" />
+    <text x="495" y="22" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#202522" text-anchor="middle">SWG 18 - 36</text>
+  </g>
+</svg>
+
