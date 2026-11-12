@@ -1,42 +1,26 @@
-import { SectionHeading } from "@/components/shared/SectionHeading";
+import { Cable, Headset, ShieldCheck, Tag, type LucideIcon } from "lucide-react";
 
-const reasons = [
-  {
-    title: "Quality-focused products",
-    body: "We stock copper-conductor wire and cable and tell you plainly what each product is, so you can match it to the job.",
-  },
-  {
-    title: "Reliable cable solutions",
-    body: "From house wiring to submersible pumps and main feeders, one supplier for the full cable range of a project.",
-  },
-  {
-    title: "Competitive trade pricing",
-    body: "Prices follow the market, so we quote on your exact product, size and quantity, including trade and bulk requirements.",
-  },
-  {
-    title: "Responsive customer service",
-    body: "Reach us by phone or WhatsApp during shop hours, Monday to Saturday, and we will answer product and size questions.",
-  },
+const points: { icon: LucideIcon; title: string; body: string }[] = [
+  { icon: ShieldCheck, title: "Quality-Focused Products", body: "Copper-conductor wire and cable." },
+  { icon: Cable, title: "Reliable Cable Solutions", body: "From house wiring to main feeders." },
+  { icon: Tag, title: "Competitive Trade Pricing", body: "Quoted on product, size and quantity." },
+  { icon: Headset, title: "Responsive Customer Support", body: "By phone or WhatsApp, Mon–Sat." },
 ];
 
 export function WhyUs() {
   return (
-    <section className="section-y border-t border-border">
-      <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
-        <SectionHeading
-          eyebrow="Why Ayesha Traders"
-          title="What you can expect when you buy from us"
-          className="md:items-start"
-        />
-        <ol className="grid gap-x-12 gap-y-10 sm:grid-cols-2">
-          {reasons.map((r, i) => (
-            <li key={r.title} className="border-t-2 border-copper pt-5">
-              <span className="text-sm font-semibold text-copper-deep tabular-nums">{String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-3 text-lg font-semibold tracking-tight">{r.title}</h3>
-              <p className="mt-2 text-[0.9375rem] leading-relaxed text-charcoal-muted">{r.body}</p>
+    <section className="border-y border-border bg-white">
+      <div className="container-page py-14 lg:py-16">
+        <h2 className="eyebrow">Why Ayesha Traders</h2>
+        <ul className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-border">
+          {points.map((p) => (
+            <li key={p.title} className="lg:px-8 lg:first:pl-0 lg:last:pr-0">
+              <p.icon aria-hidden className="size-7 text-brand" strokeWidth={1.5} />
+              <h3 className="mt-4 text-base font-semibold tracking-tight">{p.title}</h3>
+              <p className="mt-1.5 text-sm leading-relaxed text-charcoal-muted">{p.body}</p>
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   );

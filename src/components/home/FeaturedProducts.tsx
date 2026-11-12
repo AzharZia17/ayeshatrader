@@ -10,20 +10,19 @@ export function FeaturedProducts() {
     <section className="section-y border-t border-border bg-surface-gray">
       <div className="container-page">
         <SectionHeading
-          eyebrow="Featured Products"
-          title="From our catalog"
-          description="A selection from the range. Request a price for any size and we will reply with current rates."
+          eyebrow="Featured"
+          title="Selected products"
           action={
             <Button asChild variant="outline">
               <Link href="/products">
-                View all products
+                All products
                 <ArrowRight aria-hidden />
               </Link>
             </Button>
           }
         />
-        <div className="mt-12">
-          <ProductGrid products={getFeaturedProducts(4)} />
+        <div className="mt-10">
+          <ProductGrid products={getFeaturedProducts(4)} compact />
         </div>
       </div>
     </section>

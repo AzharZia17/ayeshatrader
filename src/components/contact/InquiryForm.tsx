@@ -125,7 +125,7 @@ export function InquiryForm() {
           <MessageCircle aria-hidden />
           Send Inquiry to WhatsApp
         </Button>
-        <p className="mt-3 text-xs text-charcoal-muted">This opens WhatsApp with your inquiry ready to send. Nothing is stored on this website.</p>
+        <p className="mt-3 text-xs text-charcoal-muted">Opens WhatsApp with your inquiry ready to send.</p>
       </div>
     </form>
   );

@@ -44,15 +44,15 @@ export default function QualityPage() {
       <PageHeader
         crumbs={[{ label: "Home", href: "/" }, { label: "Quality" }]}
         eyebrow="Quality & Technical"
-        title="Know your cable before you buy"
-        description="General technical information on conductors, insulation, voltage classes and size selection. It is a buying guide, not a certification statement."
+        title="Technical information"
+        description="Conductors, insulation, voltage classes and size selection. A buying guide, not a certification."
       />
 
       <section className="section-y">
         <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.8fr] lg:gap-16">
           <div>
-            <p className="eyebrow">Copper Conductors</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight">What carries the current</h2>
+            <p className="eyebrow">Materials</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight">Conductors</h2>
           </div>
           <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
             {CONDUCTOR_INFO.map((b, i) => (
@@ -68,8 +68,8 @@ export default function QualityPage() {
       <div className="bg-surface-gray">
         <TableSection
           eyebrow="Insulation Materials"
-          title="What surrounds the conductor"
-          intro="Insulation and sheathing keep conductors separated and protected. The materials below are the ones used across our range."
+          title="Insulation"
+          intro="Materials used across our range."
         >
           <DataTable table={INSULATION_TABLE} />
         </TableSection>
@@ -77,8 +77,8 @@ export default function QualityPage() {
 
       <TableSection
         eyebrow="Voltage Ratings"
-        title="Typical voltage classes"
-        intro="Voltage class tells you the system a cable type is generally made for."
+        title="Voltage classes"
+        intro="General classes by cable type."
       >
         <DataTable table={VOLTAGE_TABLE} />
       </TableSection>
@@ -86,8 +86,8 @@ export default function QualityPage() {
       <div className="bg-surface-gray">
         <TableSection
           eyebrow="Wire Size Guide"
-          title="Choosing a wire size"
-          intro="A starting point for common applications. Always size cable for the actual load and installation."
+          title="Size guide"
+          intro="A starting point for common uses."
         >
           <DataTable table={GAUGE_GUIDE} />
         </TableSection>
@@ -100,9 +100,8 @@ export default function QualityPage() {
             <h2 className="mt-3 text-3xl font-semibold tracking-tight">About certifications</h2>
           </div>
           <p className="text-base leading-relaxed text-charcoal-muted">
-            This website does not claim that any product complies with a particular national or international standard.
-            If your project requires a specific standard, test report or manufacturer datasheet, ask us before ordering and
-            we will confirm what is available for the product you want.
+            No certification claims are made on this website, and no product is stated to comply with any standard. If your
+            project needs a specific standard or test report, ask us before ordering.
           </p>
         </div>
       </section>

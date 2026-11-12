@@ -34,7 +34,7 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className={cn("sticky top-0 z-40 border-b border-border bg-white transition-shadow duration-200", scrolled && "shadow-[0_2px_12px_rgba(23,18,15,0.08)]")}>
+    <header className={cn("sticky top-0 z-40 border-b border-border bg-white transition-shadow duration-200", scrolled && "shadow-[0_2px_12px_rgba(36,33,36,0.08)]")}>
       <div className="container-page flex h-[4.5rem] lg:h-20 items-center justify-between gap-6">
         <Logo />
 

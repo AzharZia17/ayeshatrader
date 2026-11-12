@@ -68,14 +68,14 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           <div>
-            <Badge className="bg-copper-subtle text-copper-deep">{category.name}</Badge>
+            <Badge className="bg-brand-subtle text-brand">{category.name}</Badge>
             <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{product.name}</h1>
             <p className="mt-5 text-base leading-relaxed text-charcoal-muted sm:text-lg">{product.description}</p>
 
             <div className="mt-8 border border-border bg-surface-gray p-5 sm:p-6">
               <h2 className="text-base font-semibold">Request Quotation</h2>
               <p className="mt-1 mb-5 text-sm text-charcoal-muted">
-                Pick a size and send your inquiry. We will reply with the current price and availability.
+                Choose a size to get the current price.
               </p>
               <SizeInquiry product={product} idPrefix="detail" label="Request Quotation on WhatsApp" />
               <Separator className="my-5" />
@@ -110,8 +110,7 @@ export default async function ProductPage({ params }: Props) {
               ))}
             </ul>
             <p className="mt-10 text-sm leading-relaxed text-charcoal-muted">
-              Specifications describe general construction. Please confirm exact ratings and stock with us before ordering
-              for a specific project.
+              Specifications are general. Confirm ratings and stock before ordering.
             </p>
           </div>
         </div>

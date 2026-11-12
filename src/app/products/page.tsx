@@ -18,8 +18,8 @@ export default function ProductsPage() {
       <PageHeader
         crumbs={[{ label: "Home", href: "/" }, { label: "Products" }]}
         eyebrow="Product Catalog"
-        title="Wires & Cables"
-        description="Search the range by name, size or application. We do not list fixed prices because rates change; request a price for the product and size you need."
+        title="Products"
+        description="Search by name, size or application. Request a price for the size you need."
       />
       <section className="py-10 lg:py-14">
         <div className="container-page">

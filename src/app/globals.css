@@ -10,17 +10,14 @@
   --font-heading: var(--font-sans);
 
   /* Corporate Industrial Palette */
-  --color-brand: #B90D14;
-  --color-brand-hover: #96090F;
-  --color-brand-subtle: #FBEBEB;
-  --color-copper: #C8692F;
-  --color-copper-deep: #9A4D1E;
-  --color-copper-subtle: #F8EDE4;
-  --color-charcoal: #17120F;
-  --color-charcoal-muted: #57514D;
-  --color-surface-gray: #F6F4F2;
-  --color-border-subtle: #E8E4E0;
-  --color-border-strong: #D6D0CB;
+  --color-brand: #641D32;
+  --color-brand-hover: #481323;
+  --color-brand-subtle: #F6ECEF;
+  --color-charcoal: #242124;
+  --color-charcoal-muted: #6D676A;
+  --color-surface-gray: #F5F3F1;
+  --color-border-subtle: #E9E4E5;
+  --color-border-strong: #D9D2D4;
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -60,42 +57,42 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #17120F;
+  --foreground: #242124;
   --card: #FFFFFF;
-  --card-foreground: #17120F;
+  --card-foreground: #242124;
   --popover: #FFFFFF;
-  --popover-foreground: #17120F;
+  --popover-foreground: #242124;
 
-  /* Deep Corporate Green #B90D14 */
-  --primary: #B90D14;
+  /* Deep Corporate Green #641D32 */
+  --primary: #641D32;
   --primary-foreground: #FFFFFF;
 
-  --secondary: #F6F4F2;
-  --secondary-foreground: #17120F;
-  --muted: #F6F4F2;
-  --muted-foreground: #57514D;
-  --accent: #FBEBEB;
-  --accent-foreground: #B90D14;
+  --secondary: #F5F3F1;
+  --secondary-foreground: #242124;
+  --muted: #F5F3F1;
+  --muted-foreground: #6D676A;
+  --accent: #F6ECEF;
+  --accent-foreground: #641D32;
   --destructive: #C53030;
-  --border: #E8E4E0;
-  --input: #E8E4E0;
-  --ring: #B90D14;
+  --border: #E9E4E5;
+  --input: #E9E4E5;
+  --ring: #641D32;
   --radius: 0.375rem; /* 6px */
 
-  --chart-1: #B90D14;
+  --chart-1: #641D32;
   --chart-2: #E28743;
   --chart-3: #2563EB;
   --chart-4: #FACC15;
-  --chart-5: #17120F;
+  --chart-5: #242124;
 
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #17120F;
-  --sidebar-primary: #B90D14;
+  --sidebar-foreground: #242124;
+  --sidebar-primary: #641D32;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #FBEBEB;
-  --sidebar-accent-foreground: #B90D14;
-  --sidebar-border: #E8E4E0;
-  --sidebar-ring: #B90D14;
+  --sidebar-accent: #F6ECEF;
+  --sidebar-accent-foreground: #641D32;
+  --sidebar-border: #E9E4E5;
+  --sidebar-ring: #641D32;
 }
 
 @layer base {

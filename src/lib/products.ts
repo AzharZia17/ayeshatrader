@@ -82,9 +82,9 @@ export const PRODUCTS: readonly Product[] = [
     slug: "single-core-pvc-building-wire",
     name: "Single Core PVC Building Wire",
     category: "pvc-electric-wires",
-    summary: "Single-core stranded copper wire with PVC insulation for conduit wiring.",
+    summary: "Stranded copper wire with PVC insulation for conduit wiring.",
     description:
-      "Single-core copper building wire insulated with PVC and supplied in coils. Used for fixed wiring in conduit for lighting, sockets and switchboard connections. Available in several insulation colours for circuit identification.",
+      "Single-core copper wire with PVC insulation, supplied in coils. Used for fixed conduit wiring.",
     image: "/images/products/pvc-building-wire.jpg",
     imageAlt: "Coils of red, black, yellow and blue single core PVC building wire",
     specs: [
@@ -110,7 +110,7 @@ export const PRODUCTS: readonly Product[] = [
     category: "pvc-electric-wires",
     summary: "Two-core flat copper cable with PVC insulation and outer sheath.",
     description:
-      "Two insulated copper conductors laid side by side inside a flat PVC sheath. Its low profile makes it suitable for surface wiring and short extensions where a single sheathed cable is more convenient than two separate wires.",
+      "Two insulated copper conductors in a flat PVC sheath. Suited to surface wiring and short extensions.",
     image: "/images/products/twin-flat-wire.jpg",
     imageAlt: "Coil of white twin flat PVC cable with red and black conductors exposed",
     specs: [
@@ -136,7 +136,7 @@ export const PRODUCTS: readonly Product[] = [
     category: "flexible-cables",
     summary: "Round flexible cable with fine-stranded copper cores and PVC sheath.",
     description:
-      "Round multi-core cable made with finely stranded copper conductors, which makes it easier to bend and route than rigid building wire. Used to connect appliances, portable equipment and machinery.",
+      "Round multi-core cable with fine-stranded copper cores. Easy to bend and route.",
     image: "/images/products/flexible-multicore-cable.jpg",
     imageAlt: "Black round flexible multi-core cable with copper conductors",
     specs: [
@@ -168,7 +168,7 @@ export const PRODUCTS: readonly Product[] = [
     category: "flexible-cables",
     summary: "Flat three-core copper cable commonly used with submersible pumps.",
     description:
-      "Flat three-core cable with colour-coded cores, commonly used to connect submersible pumps to the starter. The flat form lies neatly alongside the pump's riser pipe.",
+      "Flat three-core cable with colour-coded cores, commonly used with submersible pumps.",
     image: "/images/products/submersible-flat-cable.jpg",
     imageAlt: "Coil of blue 3-core flat submersible cable with red, yellow and blue cores",
     specs: [
@@ -199,7 +199,7 @@ export const PRODUCTS: readonly Product[] = [
     category: "copper-wires",
     summary: "Bare copper and green insulated wire for earthing and grounding.",
     description:
-      "Copper wire for earth connections, supplied bare and in green insulation. Used to connect panels, equipment frames and earth electrodes to the installation's earthing system.",
+      "Copper wire for earth connections, supplied bare or in green insulation.",
     image: "/images/products/single-core-earth-wire.jpg",
     imageAlt: "Coils of green and yellow insulated earth wire and bare copper wire",
     specs: [
@@ -224,7 +224,7 @@ export const PRODUCTS: readonly Product[] = [
     category: "copper-wires",
     summary: "Enamel-coated round copper wire on spools for motor and coil winding.",
     description:
-      "Round copper wire coated with a thin insulating enamel, supplied on spools. Used by rewinding workshops for fans, motors, transformers and coils.",
+      "Enamel-coated round copper wire on spools, for motor and coil winding.",
     image: "/images/products/copper-winding-wire.jpg",
     imageAlt: "Spool of enamelled copper winding wire",
     specs: [
@@ -259,7 +259,7 @@ export const PRODUCTS: readonly Product[] = [
     category: "power-cables",
     summary: "Multi-core copper power cable with steel wire armour and PVC sheath.",
     description:
-      "Multi-core copper power cable with a layer of steel wire armour under the outer sheath for mechanical protection. Used for main supply and feeder runs where the cable may be exposed to physical damage, including underground routes.",
+      "Multi-core copper cable with steel wire armour for mechanical protection, including underground runs.",
     image: "/images/products/industrial-power-cable.jpg",
     imageAlt: "Armoured multi-core power cable cut away to show steel wire armour and copper cores",
     specs: [
@@ -291,7 +291,7 @@ export const PRODUCTS: readonly Product[] = [
     category: "power-cables",
     summary: "Multi-core copper power cable with PVC insulation and PVC sheath.",
     description:
-      "Multi-core copper power cable without armour, lighter and easier to install than armoured cable. Suited to indoor runs in trays, ducts and conduit where mechanical protection is provided by the installation.",
+      "Multi-core copper cable without armour. Lighter, for indoor trays, ducts and conduit.",
     image: "/images/products/unarmoured-power-cable.jpg",
     imageAlt: "Unarmoured multi-core power cable with red, yellow, blue and black cores",
     specs: [

@@ -5,12 +5,12 @@ import { Button } from "@/components/ui/button";
 
 export function CtaBand() {
   return (
-    <section className="bg-brand text-white">
+    <section className="bg-brand-hover text-white">
       <div className="container-page flex flex-col gap-8 py-16 lg:flex-row lg:items-center lg:justify-between lg:py-20">
         <div className="max-w-2xl">
-          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Looking for Reliable Electrical Cables?</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Need Electrical Cable Solutions?</h2>
           <p className="mt-4 text-base leading-relaxed text-white/85 sm:text-lg">
-            Tell us the product, size and quantity you need. We will reply with current prices and availability.
+            Send us the product, size and quantity for a current price.
           </p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">

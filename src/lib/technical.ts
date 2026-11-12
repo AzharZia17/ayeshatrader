@@ -27,16 +27,16 @@ export interface FaqItem {
 
 export const CONDUCTOR_INFO: InfoBlock[] = [
   {
-    title: "Copper conductors",
-    body: "Copper is widely used for building wire and cables because it conducts electricity well and is easy to terminate. Larger sizes are made from several strands twisted together, which makes the cable easier to bend and pull.",
+    title: "Copper",
+    body: "Copper conducts well and is easy to terminate. Larger sizes are made from twisted strands for easier bending.",
   },
   {
-    title: "Solid and stranded construction",
-    body: "Strand count and strand diameter together define the conductor size. Fine-stranded conductors are more flexible and are used in flexible cables; fewer, thicker strands suit fixed wiring.",
+    title: "Strand construction",
+    body: "Strand count and diameter define the size. Fine strands suit flexible cable; thicker strands suit fixed wiring.",
   },
   {
-    title: "Checking a conductor",
-    body: "Conductor size can differ between products. Ask for the size marking and strand construction when comparing offers, and have critical sizes checked by a qualified electrician.",
+    title: "Comparing offers",
+    body: "Ask for the size marking and strand construction, and have critical sizes checked by an electrician.",
   },
 ];
 
@@ -81,7 +81,7 @@ export const VOLTAGE_TABLE: InfoTable = {
     ["Flexible multi-core cable", "300/500 V", "Appliances and equipment"],
     ["Armoured / unarmoured power cable", "0.6/1 kV", "Feeders and distribution"],
   ],
-  note: "These are typical classes for each cable type, not a certification. Please confirm the rating of the specific stock when you place an enquiry.",
+  note: "Typical classes by cable type, not a certification. Confirm the rating of the stock you order.",
 };
 
 export const GAUGE_GUIDE: InfoTable = {
@@ -95,7 +95,7 @@ export const GAUGE_GUIDE: InfoTable = {
     ["Submersible pump supply", "Depends on pump rating and run length", "Flat submersible cable"],
     ["Sub-mains and main feeders", "10 mm² and above", "Armoured / unarmoured power cable"],
   ],
-  note: "Indicative only. The correct size depends on load, cable length, installation method and local regulations. Have a qualified electrician select the size for your installation.",
+  note: "Indicative only. Have a qualified electrician select the size for your installation.",
 };
 
 export const HOME_SPEC_TABLE: InfoTable = {
@@ -112,32 +112,26 @@ export const HOME_SPEC_TABLE: InfoTable = {
 export const FAQS: FaqItem[] = [
   {
     question: "Do you publish fixed prices?",
-    answer:
-      "No. Copper and cable prices change regularly, so we quote against your exact product, size and quantity. Send an inquiry on WhatsApp or call us for the current price.",
+    answer: "No. Prices change often, so we quote on your product, size and quantity. Ask on WhatsApp or call us.",
   },
   {
     question: "How do I choose the right cable size?",
-    answer:
-      "Cable size depends on the load, the length of the run and how the cable is installed. Use our size guide as a starting point and have a qualified electrician confirm the size for your project.",
+    answer: "It depends on load, length and installation. Use the size guide as a start and confirm with an electrician.",
   },
   {
-    question: "Can I order a specific length or a full coil?",
-    answer:
-      "Many products are supplied as full coils or drums, and some can be supplied as cut lengths. Tell us the length you need when you inquire.",
+    question: "Can I order a specific length?",
+    answer: "Many products come as coils or drums, and some as cut lengths. Tell us the length when you inquire.",
   },
   {
-    question: "Do your cables carry certifications or standards marks?",
-    answer:
-      "We do not make any certification claims on this website. If you need a specific standard or test report for a project, ask us before ordering and we will tell you what is available for that product.",
+    question: "Do your cables carry certifications?",
+    answer: "We make no certification claims on this website. If a project needs a specific standard, ask us before ordering.",
   },
   {
-    question: "What is the difference between armoured and unarmoured cable?",
-    answer:
-      "Armoured cable has a layer of steel wires under the outer sheath for mechanical protection and is used for outdoor or underground runs. Unarmoured cable is lighter and is used indoors where it is protected by trays, ducts or conduit.",
+    question: "Armoured or unarmoured cable?",
+    answer: "Armoured cable has steel wire protection for outdoor or underground runs. Unarmoured is lighter, for indoor trays and ducts.",
   },
   {
-    question: "Which cable is used with a submersible pump?",
-    answer:
-      "Flat submersible cable is commonly used. The size depends on the pump rating and the distance from the starter to the pump, so share both when you inquire.",
+    question: "Which cable suits a submersible pump?",
+    answer: "Flat submersible cable is common. Share the pump rating and cable length so we can suggest a size.",
   },
 ];

@@ -3,11 +3,11 @@ import { ADDRESS_SHORT, BUSINESS_HOURS, CONTACT_NUMBERS, MAPS_URL } from "@/lib/
 
 export function UtilityBar() {
   return (
-    <div className="bg-charcoal text-[0.8125rem] text-white/80">
+    <div className="bg-brand text-[0.8125rem] text-white/85">
       <div className="container-page flex min-h-10 items-center justify-between gap-6">
         <ul className="hidden items-center gap-6 lg:flex">
           <li className="flex items-center gap-2">
-            <MapPin aria-hidden className="size-3.5 text-white/50" />
+            <MapPin aria-hidden className="size-3.5 text-white/60" />
             <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">
               {ADDRESS_SHORT}
             </a>

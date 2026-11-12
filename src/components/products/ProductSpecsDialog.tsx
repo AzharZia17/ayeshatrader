@@ -27,7 +27,7 @@ export function ProductSpecsDialog({ product, open, onOpenChange }: Props) {
           />
           <div className="min-w-0">
             <DialogHeader className="pr-8">
-              <p className="eyebrow text-copper-deep">{getCategoryName(product.category)}</p>
+              <p className="eyebrow text-brand">{getCategoryName(product.category)}</p>
               <DialogTitle className="text-xl">{product.name}</DialogTitle>
               <DialogDescription>Quick specs</DialogDescription>
             </DialogHeader>

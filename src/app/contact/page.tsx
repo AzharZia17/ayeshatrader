@@ -33,7 +33,7 @@ export default function ContactPage() {
         crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]}
         eyebrow="Contact Sales"
         title="Request a quotation"
-        description="Call us, message us on WhatsApp, or send the inquiry form with your product, size and quantity."
+        description="Call, message on WhatsApp, or send the form below."
       />
       <section className="section-y">
         <div className="container-page grid gap-14 lg:grid-cols-[1fr_1.4fr] lg:gap-20">
@@ -83,7 +83,7 @@ export default function ContactPage() {
 
           <div className="border border-border bg-white p-6 sm:p-8">
             <h2 className="text-2xl font-semibold tracking-tight">Send an inquiry</h2>
-            <p className="mt-2 mb-8 text-[0.9375rem] text-charcoal-muted">Fields are sent to us through WhatsApp so we can reply with a price.</p>
+            <p className="mt-2 mb-8 text-[0.9375rem] text-charcoal-muted">Sent to us on WhatsApp.</p>
             <InquiryForm />
           </div>
         </div>

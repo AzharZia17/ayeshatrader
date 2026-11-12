@@ -18,12 +18,12 @@ const link = "text-sm text-white/70 transition-colors hover:text-white";
 
 export function Footer() {
   return (
-    <footer className="border-t-4 border-copper bg-charcoal text-white">
+    <footer className="bg-brand-hover text-white">
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
         <div className="max-w-xs">
           <Logo inverse />
           <p className="mt-6 text-sm leading-relaxed text-white/70">
-            {BUSINESS_TAGLINE} Supplier of electrical wires and cables in Gujranwala, Pakistan.
+            {BUSINESS_TAGLINE} Electrical wires and cables, Gujranwala.
           </p>
         </div>
 
@@ -90,7 +90,7 @@ export function Footer() {
           <p>
             © {BUSINESS_NAME}. All rights reserved.
           </p>
-          <p>Prices are provided on inquiry.</p>
+          
         </div>
       </div>
     </footer>
