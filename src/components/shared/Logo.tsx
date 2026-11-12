@@ -10,14 +10,14 @@ export function Logo({ inverse = false, className }: { inverse?: boolean; classN
         <Image
           src="/images/logo.png"
           alt=""
-          width={886}
-          height={508}
+          width={900}
+          height={320}
           priority
-          sizes="80px"
-          className={cn("h-12 w-auto lg:h-14", !inverse && "mix-blend-multiply")}
+          sizes="140px"
+          className={cn("h-11 w-auto lg:h-14", !inverse && "mix-blend-multiply")}
         />
       </span>
-      <span className="flex flex-col leading-none">
+      <span className="flex hidden flex-col leading-none sm:flex">
         <span className={cn("text-[1.0625rem] font-bold tracking-[0.06em] uppercase", inverse ? "text-white" : "text-charcoal")}>
           {BUSINESS_NAME}
         </span>
