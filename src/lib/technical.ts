@@ -1,7 +1,7 @@
 /**
  * Technical reference content for the Quality page and homepage.
  * General industry information only. It is not a statement of certification
- * or compliance for any specific Ayesha Traders product.
+ * or compliance for any specific Ayesha Trader product.
  */
 
 export interface TableRow {

@@ -8,7 +8,7 @@ import { BUSINESS_CATEGORY, BUSINESS_NAME, BUSINESS_TAGLINE } from "@/lib/consta
 
 export const metadata: Metadata = {
   title: { absolute: `${BUSINESS_NAME} | ${BUSINESS_CATEGORY} in Gujranwala` },
-  description: `${BUSINESS_TAGLINE} PVC building wire, flexible cables, copper wire and power cables from Ayesha Traders, Gujranwala.`,
+  description: `${BUSINESS_TAGLINE} PVC building wire, flexible cables, copper wire and power cables from Ayesha Trader, Gujranwala.`,
   alternates: { canonical: "/" },
 };
 

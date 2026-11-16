@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) return {};
   return {
     title: product.name,
-    description: `${product.summary} Request a price by size from Ayesha Traders, Gujranwala.`,
+    description: `${product.summary} Request a price by size from Ayesha Trader, Gujranwala.`,
     alternates: { canonical: `/products/${product.slug}` },
     openGraph: {
-      title: `${product.name} | Ayesha Traders`,
+      title: `${product.name} | Ayesha Trader`,
       description: product.summary,
       url: `/products/${product.slug}`,
       images: [{ url: product.image, alt: product.imageAlt }],

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Technical information on copper conductors, PVC insulation, voltage classes and wire size selection, plus answers to common questions about electrical cables.",
   alternates: { canonical: "/quality" },
-  openGraph: { title: "Quality & Technical Information | Ayesha Traders", url: "/quality" },
+  openGraph: { title: "Quality & Technical Information | Ayesha Trader", url: "/quality" },
 };
 
 const tables = [

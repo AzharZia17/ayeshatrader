@@ -7,9 +7,9 @@ import { InquiryForm } from "@/components/contact/InquiryForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Ayesha Traders in Gujranwala by phone or WhatsApp, or send a product inquiry with the size and quantity you need.",
+    "Contact Ayesha Trader in Gujranwala by phone or WhatsApp, or send a product inquiry with the size and quantity you need.",
   alternates: { canonical: "/contact" },
-  openGraph: { title: "Contact | Ayesha Traders", url: "/contact" },
+  openGraph: { title: "Contact | Ayesha Trader", url: "/contact" },
 };
 
 function Block({ icon: Icon, title, children }: { icon: typeof Phone; title: string; children: React.ReactNode }) {

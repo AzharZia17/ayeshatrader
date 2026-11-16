@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   description,
   applicationName: BUSINESS_NAME,
   keywords: [
-    "Ayesha Traders",
+    "Ayesha Trader",
     "electrical wires and cables Gujranwala",
     "PVC building wire",
     "flexible cable",

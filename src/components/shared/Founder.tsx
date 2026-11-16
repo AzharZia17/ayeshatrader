@@ -20,7 +20,7 @@ export function Founder({ detailed = false, className }: { detailed?: boolean; c
           <div className=" relative aspect-[1215/1295] overflow-hidden bg-surface-gray">
             <Image
               src="/images/ceo-muhammad-shaukat.jpg"
-              alt={`${CEO_NAME}, ${CEO_TITLE} of Ayesha Traders`}
+              alt={`${CEO_NAME}, ${CEO_TITLE} of Ayesha Trader`}
               fill
               sizes="(max-width: 640px) 90vw, 420px"
               className="object-cover"
@@ -39,7 +39,7 @@ export function Founder({ detailed = false, className }: { detailed?: boolean; c
           </h2>
           <div className="mt-7 max-w-lg space-y-4 text-[1.0625rem] leading-relaxed text-charcoal-muted">
             <p>
-              Ayesha Traders began in {FOUNDED_YEAR} in Gujranwala with one aim: make dependable cable and deal honestly. Under {CEO_NAME}, it has grown into a team of {EMPLOYEES} that manufactures building wire, flexible cable, copper wire and power cable.
+              Ayesha Trader began in {FOUNDED_YEAR} in Gujranwala with one aim: make dependable cable and deal honestly. Under {CEO_NAME}, it has grown into a team of {EMPLOYEES} that manufactures building wire, flexible cable, copper wire and power cable.
             </p>
             {detailed && (
               <p>

@@ -10,9 +10,9 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Ayesha Traders is an electrical wires and cables manufacturer in Gujranwala, Pakistan.",
+  description: "Ayesha Trader is an electrical wires and cables manufacturer in Gujranwala, Pakistan.",
   alternates: { canonical: "/about" },
-  openGraph: { title: "About Us | Ayesha Traders", url: "/about" },
+  openGraph: { title: "About Us | Ayesha Trader", url: "/about" },
 };
 
 const commitments = [

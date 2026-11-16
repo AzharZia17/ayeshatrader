@@ -1,4 +1,4 @@
-export const BUSINESS_NAME = "Ayesha Traders";
+export const BUSINESS_NAME = "Ayesha Trader";
 export const BUSINESS_CATEGORY = "Electrical Wires & Cables Manufacturer";
 export const BUSINESS_TAGLINE = "Reliable Cables. Trusted Quality.";
 

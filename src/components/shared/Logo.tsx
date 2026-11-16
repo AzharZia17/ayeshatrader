@@ -19,7 +19,7 @@ export function Logo({ inverse = false, className }: { inverse?: boolean; classN
       </span>
       <span className="flex flex-col leading-none">
         <span className={cn("font-display text-[1.0625rem] tracking-[-0.01em] sm:text-xl", inverse ? "text-white" : "text-ink")}>
-          Ayesha Traders
+          Ayesha Trader
         </span>
         <span className={cn("mt-1 text-[0.5625rem] font-semibold tracking-[0.24em] sm:mt-1.5 sm:text-[0.625rem] uppercase", inverse ? "text-white/60" : "text-charcoal-muted")}>
           Wires &amp; Cables

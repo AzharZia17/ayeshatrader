@@ -7,9 +7,9 @@ import { CtaBand } from "@/components/shared/CtaBand";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Browse PVC electric wires, flexible cables, copper wires and power cables from Ayesha Traders. Request prices on WhatsApp by product and size.",
+    "Browse PVC electric wires, flexible cables, copper wires and power cables from Ayesha Trader. Request prices on WhatsApp by product and size.",
   alternates: { canonical: "/products" },
-  openGraph: { title: "Products | Ayesha Traders", url: "/products" },
+  openGraph: { title: "Products | Ayesha Trader", url: "/products" },
 };
 
 export default function ProductsPage() {
