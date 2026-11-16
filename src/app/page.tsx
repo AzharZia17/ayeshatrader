@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/Hero";
-import { Ticker } from "@/components/home/Ticker";
-import { CategoryGrid } from "@/components/home/CategoryGrid";
+import { CategoryList } from "@/components/home/CategoryList";
 import { FeaturedProducts } from "@/components/home/FeaturedProducts";
-import { WhyUs } from "@/components/home/WhyUs";
-import { TechnicalQuality } from "@/components/home/TechnicalQuality";
+import { Materials } from "@/components/home/Materials";
 import { CtaBand } from "@/components/shared/CtaBand";
 import { BUSINESS_CATEGORY, BUSINESS_NAME, BUSINESS_TAGLINE } from "@/lib/constants";
 
@@ -18,11 +16,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Ticker />
-      <CategoryGrid />
+      <CategoryList />
       <FeaturedProducts />
-      <WhyUs />
-      <TechnicalQuality />
+      <Materials />
       <CtaBand />
     </>
   );

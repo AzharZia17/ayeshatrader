@@ -1,6 +1,11 @@
 export const BUSINESS_NAME = "Ayesha Traders";
-export const BUSINESS_CATEGORY = "Electrical Wires & Cables Supplier";
+export const BUSINESS_CATEGORY = "Electrical Wires & Cables Manufacturer";
 export const BUSINESS_TAGLINE = "Reliable Cables. Trusted Quality.";
+
+export const CEO_NAME = "Muhammad Shaukat";
+export const CEO_TITLE = "CEO";
+export const FOUNDED_YEAR = 2010;
+export const EMPLOYEES = "30+";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://ayeshatraders.pk";

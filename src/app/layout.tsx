@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import { UtilityBar } from "@/components/layout/UtilityBar";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { MobileActionBar } from "@/components/layout/MobileActionBar";
 import {
   ADDRESS_FULL,
   BUSINESS_CATEGORY,
@@ -13,10 +13,10 @@ import {
   SITE_URL,
 } from "@/lib/constants";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"], display: "swap" });
+const jakarta = Plus_Jakarta_Sans({ variable: "--font-jakarta", subsets: ["latin"], display: "swap" });
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
 
-const description = `${BUSINESS_TAGLINE} ${BUSINESS_NAME} supplies PVC electric wires, flexible cables, copper wires and power cables in Gujranwala, Pakistan.`;
+const description = `${BUSINESS_TAGLINE} ${BUSINESS_NAME} manufactures PVC electric wires, flexible cables, copper wires and power cables in Gujranwala, Pakistan.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -60,12 +60,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#641D32",
+  themeColor: "#0C0D08",
 };
 
 const localBusiness = {
   "@context": "https://schema.org",
-  "@type": "Store",
+  "@type": "Organization",
+  foundingDate: "2010",
+  numberOfEmployees: { "@type": "QuantitativeValue", value: 30 },
+  founder: { "@type": "Person", name: "Muhammad Shaukat", jobTitle: "CEO" },
   name: BUSINESS_NAME,
   description: BUSINESS_CATEGORY,
   url: SITE_URL,
@@ -89,7 +92,7 @@ const localBusiness = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${jakarta.variable} ${inter.variable}`}>
       <body className="flex min-h-dvh flex-col bg-white text-charcoal">
         <a
           href="#main"
@@ -97,12 +100,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
-        <UtilityBar />
         <Navbar />
         <main id="main" className="flex-1">
           {children}
         </main>
         <Footer />
+        <MobileActionBar />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusiness).replace(/</g, "\\u003c") }} />
       </body>
     </html>

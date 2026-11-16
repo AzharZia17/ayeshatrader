@@ -36,7 +36,7 @@ function validate(v: Values): Errors {
 function Field({ id, label, error, hint, children }: { id: string; label: string; error?: string; hint?: string; children: React.ReactNode }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-semibold text-charcoal">
+      <label htmlFor={id} className="mb-2 block text-[0.6875rem] font-bold tracking-[0.14em] text-charcoal-muted uppercase">
         {label}
       </label>
       {children}

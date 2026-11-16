@@ -22,7 +22,7 @@ function AccordionTrigger({ className, children, ...props }: AccordionPrimitive.
       <AccordionPrimitive.Trigger
         data-slot="accordion-trigger"
         className={cn(
-          "group/accordion-trigger flex flex-1 cursor-pointer items-center justify-between gap-6 py-5 text-left text-base font-semibold text-charcoal transition-colors outline-none hover:text-brand focus-visible:text-brand",
+          "group/accordion-trigger flex flex-1 cursor-pointer items-center justify-between gap-6 py-6 text-left font-display text-xl font-normal tracking-tight text-charcoal transition-colors outline-none hover:text-brand focus-visible:text-brand",
           className
         )}
         {...props}

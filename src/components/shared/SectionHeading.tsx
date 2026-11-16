@@ -2,21 +2,21 @@ import { cn } from "@/lib/utils";
 
 interface SectionHeadingProps {
   eyebrow?: string;
-  title: string;
+  title: React.ReactNode;
   description?: string;
   as?: "h1" | "h2";
   className?: string;
-  /** Optional element aligned to the right on wide screens (e.g. a link) */
+  inverse?: boolean;
   action?: React.ReactNode;
 }
 
-export function SectionHeading({ eyebrow, title, description, as: Tag = "h2", className, action }: SectionHeadingProps) {
+export function SectionHeading({ eyebrow, title, description, as: Tag = "h2", className, inverse, action }: SectionHeadingProps) {
   return (
     <div className={cn("flex flex-col justify-between gap-6 md:flex-row md:items-end", className)}>
       <div className="max-w-2xl">
-        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-        <Tag className={cn("text-3xl font-semibold tracking-tight sm:text-5xl", eyebrow && "mt-3")}>{title}</Tag>
-        {description && <p className="mt-4 text-base leading-relaxed text-charcoal-muted sm:text-lg">{description}</p>}
+        {eyebrow && <p className={cn("eyebrow", inverse && "text-white/70")}>{eyebrow}</p>}
+        <Tag className={cn("display text-[2rem] sm:text-6xl", eyebrow && "mt-5", inverse && "text-white")}>{title}</Tag>
+        {description && <p className={cn("mt-5 text-lg leading-relaxed", inverse ? "text-white/75" : "text-charcoal-muted")}>{description}</p>}
       </div>
       {action}
     </div>

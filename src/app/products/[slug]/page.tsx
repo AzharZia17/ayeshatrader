@@ -4,9 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Check, Phone } from "lucide-react";
 import { PRODUCTS, getCategory, getProduct, getProductsByCategory } from "@/lib/products";
 import { PRIMARY_CONTACT } from "@/lib/constants";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProductImage } from "@/components/shared/ProductImage";
 import { SizeInquiry } from "@/components/products/SizeInquiry";
 import { SpecList } from "@/components/products/SpecList";
@@ -46,82 +44,90 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <>
-      <section className="border-b border-border">
-        <div className="container-page py-5">
-          <Link href="/products" className="inline-flex items-center gap-2 text-sm font-medium text-charcoal-muted hover:text-brand">
-            <ArrowLeft aria-hidden className="size-4" />
-            All products
-          </Link>
-        </div>
-      </section>
+      <div className="container-page pt-8">
+        <Link href="/products" className="group inline-flex items-center gap-2 text-sm font-semibold text-charcoal-muted hover:text-brand">
+          <ArrowLeft aria-hidden className="size-4 transition-transform group-hover:-translate-x-1" />
+          All products
+        </Link>
+      </div>
 
-      <section className="section-y pt-10 lg:pt-14">
-        <div className="container-page grid gap-10 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-          <div>
-            <ProductImage
-              src={product.image}
-              alt={product.imageAlt}
-              priority
-              sizes="(max-width: 1024px) 100vw, 560px"
-              className="rounded-lg border border-border lg:sticky lg:top-28"
-            />
+      <section className="pt-8 pb-20 lg:pb-32">
+        <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
+          <div className="lg:sticky lg:top-28 lg:self-start">
+            <div className="relative">
+              <div aria-hidden className="absolute inset-0 hidden translate-x-4 sm:block translate-y-4  bg-brand/10" />
+              <ProductImage
+                src={product.image}
+                alt={product.imageAlt}
+                priority
+                sizes="(max-width: 1024px) 100vw, 560px"
+                className=""
+              />
+            </div>
           </div>
 
           <div>
-            <Badge className="bg-brand-subtle text-brand">{category.name}</Badge>
-            <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">{product.name}</h1>
-            <p className="mt-5 text-base leading-relaxed text-charcoal-muted sm:text-lg">{product.description}</p>
+            <p className="eyebrow">{category.name}</p>
+            <h1 className="display mt-5 text-[2.1rem] sm:text-6xl">{product.name}</h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-charcoal-muted">{product.description}</p>
 
-            <div className="mt-8 border border-border bg-surface-gray p-5 sm:p-6">
-              <h2 className="text-base font-semibold">Request Quotation</h2>
-              <p className="mt-1 mb-5 text-sm text-charcoal-muted">
-                Choose a size to get the current price.
-              </p>
-              <SizeInquiry product={product} idPrefix="detail" label="Request Quotation on WhatsApp" />
-              <Separator className="my-5" />
-              <Button asChild variant="outline" className="w-full">
-                <a href={`tel:${PRIMARY_CONTACT.tel}`}>
-                  <Phone aria-hidden />
-                  Call {PRIMARY_CONTACT.display}
-                </a>
-              </Button>
+            <div className="mt-10  bg-ink p-6 text-white  sm:p-8">
+              <h2 className="display text-3xl text-white">Request a quotation</h2>
+              <div className="mt-6">
+                <SizeInquiry product={product} idPrefix="detail" label="Quote on WhatsApp" inverse />
+              </div>
+              <a
+                href={`tel:${PRIMARY_CONTACT.tel}`}
+                className="mt-5 flex items-center justify-center gap-2 text-sm font-semibold text-white/80 hover:text-white"
+              >
+                <Phone aria-hidden className="size-4" />
+                or call {PRIMARY_CONTACT.display}
+              </a>
             </div>
 
-            <h2 className="mt-12 text-xl font-semibold tracking-tight">Technical specifications</h2>
-            <SpecList specs={product.specs} className="mt-4" />
-
-            <h2 className="mt-12 text-xl font-semibold tracking-tight">Available sizes</h2>
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {product.sizes.map((s) => (
-                <li key={s} className="rounded-md border border-border-strong px-3 py-1.5 text-sm font-medium">
-                  {s}
-                </li>
-              ))}
-            </ul>
-            {product.sizeNote && <p className="mt-3 text-sm text-charcoal-muted">{product.sizeNote}</p>}
-
-            <h2 className="mt-12 text-xl font-semibold tracking-tight">Applications</h2>
-            <ul className="mt-4 space-y-3">
-              {product.applications.map((a) => (
-                <li key={a} className="flex gap-3 text-[0.9375rem] text-charcoal-muted">
-                  <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-brand" />
-                  {a}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-10 text-sm leading-relaxed text-charcoal-muted">
-              Specifications are general. Confirm ratings and stock before ordering.
-            </p>
+            <Tabs defaultValue="specs" className="mt-14">
+              <TabsList aria-label="Product information">
+                <TabsTrigger value="specs">Specifications</TabsTrigger>
+                <TabsTrigger value="sizes">Sizes</TabsTrigger>
+                <TabsTrigger value="uses">Applications</TabsTrigger>
+              </TabsList>
+              <TabsContent value="specs">
+                <SpecList specs={product.specs} />
+              </TabsContent>
+              <TabsContent value="sizes">
+                <ul className="flex flex-wrap gap-2.5">
+                  {product.sizes.map((s) => (
+                    <li key={s} className=" border border-border-strong px-4 py-2 text-sm font-semibold">
+                      {s}
+                    </li>
+                  ))}
+                </ul>
+                {product.sizeNote && <p className="mt-5 text-sm text-charcoal-muted">{product.sizeNote}</p>}
+              </TabsContent>
+              <TabsContent value="uses">
+                <ul className="divide-y divide-border border-y border-border">
+                  {product.applications.map((a) => (
+                    <li key={a} className="flex gap-4 py-4 text-[0.9375rem]">
+                      <Check aria-hidden className="mt-0.5 size-4 shrink-0 text-brand" />
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+              </TabsContent>
+            </Tabs>
+            <p className="mt-8 text-xs leading-relaxed text-charcoal-muted">Specifications are general. Confirm ratings and stock before ordering.</p>
           </div>
         </div>
       </section>
 
       {related.length > 0 && (
-        <section className="section-y border-t border-border bg-surface-gray">
+        <section className="bg-surface-gray py-20 lg:py-28">
           <div className="container-page">
-            <h2 className="mb-8 text-2xl font-semibold tracking-tight">More in {category.name}</h2>
-            <div className="max-w-xl sm:max-w-none lg:max-w-[calc(50%-0.75rem)]">
-              <ProductGrid products={related} />
+            <h2 className="display mb-12 text-4xl">
+              More in <span className="text-brand">{category.name}</span>
+            </h2>
+            <div className="max-w-sm">
+              <ProductGrid products={related} columns="one" />
             </div>
           </div>
         </section>

@@ -12,7 +12,7 @@ function SelectTrigger({ className, children, ...props }: SelectPrimitive.Trigge
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
       className={cn(
-        "flex h-11 w-full cursor-pointer items-center justify-between gap-2 rounded-md border border-border-strong bg-white px-3 text-left text-[0.9375rem] text-charcoal transition-colors outline-none hover:border-charcoal/50 focus-visible:border-brand focus-visible:ring-2 focus-visible:ring-brand/20 data-popup-open:border-brand aria-invalid:border-destructive data-placeholder:text-[#8a918d]",
+        "flex h-12 w-full cursor-pointer items-center justify-between gap-2  border border-border-strong bg-white px-4 text-left text-[0.9375rem] text-charcoal transition-colors outline-none hover:border-charcoal/50 focus-visible:border-brand focus-visible:ring-2 focus-visible:ring-brand/20 data-popup-open:border-brand aria-invalid:border-destructive data-placeholder:text-[#8a918d]",
         className
       )}
       {...props}
@@ -36,7 +36,7 @@ function SelectContent({ className, children, ...props }: SelectPrimitive.Popup.
         <SelectPrimitive.Popup
           data-slot="select-content"
           className={cn(
-            "max-h-72 min-w-(--anchor-width) overflow-y-auto rounded-md border border-border bg-white p-1 text-sm text-charcoal shadow-lg outline-none",
+            "max-h-72 min-w-(--anchor-width) overflow-y-auto  border border-border bg-white p-1 text-sm text-charcoal shadow-[0_20px_40px_-16px_rgba(12,13,8,0.3)] outline-none",
             className
           )}
           {...props}
@@ -53,7 +53,7 @@ function SelectItem({ className, children, ...props }: SelectPrimitive.Item.Prop
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "relative flex cursor-pointer items-center gap-2 rounded-[4px] py-2 pr-8 pl-3 text-sm outline-none select-none data-highlighted:bg-surface-gray data-selected:font-semibold",
+        "relative flex cursor-pointer items-center gap-2  py-2 pr-8 pl-3 text-sm outline-none select-none data-highlighted:bg-surface-gray data-selected:font-semibold",
         className
       )}
       {...props}

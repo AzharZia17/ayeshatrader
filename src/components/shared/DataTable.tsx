@@ -5,7 +5,7 @@ import type { InfoTable } from "@/lib/technical";
 export function DataTable({ table, title }: { table: InfoTable; title?: string }) {
   return (
     <figure className="min-w-0">
-      {title && <figcaption className="mb-3 text-sm font-semibold text-charcoal">{title}</figcaption>}
+      {title && <figcaption className="mb-3 font-display text-xl">{title}</figcaption>}
       <Table>
         <TableCaption>{table.caption}</TableCaption>
         <TableHeader>
@@ -22,7 +22,7 @@ export function DataTable({ table, title }: { table: InfoTable; title?: string }
             <TableRow key={row[0]}>
               {row.map((cell, i) =>
                 i === 0 ? (
-                  <TableHead key={i} scope="row" className="font-semibold tracking-normal text-charcoal normal-case text-sm whitespace-normal">
+                  <TableHead key={i} scope="row" className="font-display text-base font-normal tracking-normal text-charcoal normal-case whitespace-normal">
                     {cell}
                   </TableHead>
                 ) : (
@@ -33,7 +33,7 @@ export function DataTable({ table, title }: { table: InfoTable; title?: string }
           ))}
         </TableBody>
       </Table>
-      {table.note && <p className="mt-3 text-sm leading-relaxed text-charcoal-muted">{table.note}</p>}
+      {table.note && <p className="mt-4 text-sm leading-relaxed text-charcoal-muted">{table.note}</p>}
     </figure>
   );
 }

@@ -8,14 +8,14 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 /** Size picker + WhatsApp button. The message always carries product name and the selected size. */
-export function SizeInquiry({ product, idPrefix, label = "Request Price on WhatsApp" }: { product: Product; idPrefix: string; label?: string }) {
+export function SizeInquiry({ product, idPrefix, label = "Request Price on WhatsApp", inverse = false }: { product: Product; idPrefix: string; label?: string; inverse?: boolean }) {
   const [size, setSize] = React.useState<string>(product.sizes[0] ?? "");
   const labelId = `${idPrefix}-size-label`;
 
   return (
     <div className="space-y-4">
       <div>
-        <label id={labelId} className="mb-2 block text-sm font-semibold text-charcoal">
+        <label id={labelId} className={`mb-2 block text-xs font-bold tracking-[0.14em] uppercase ${inverse ? "text-white/70" : "text-charcoal-muted"}`}>
           Select size
         </label>
         <Select value={size} onValueChange={(v) => v && setSize(v)}>
@@ -30,9 +30,9 @@ export function SizeInquiry({ product, idPrefix, label = "Request Price on Whats
             ))}
           </SelectContent>
         </Select>
-        {product.sizeNote && <p className="mt-2 text-xs leading-relaxed text-charcoal-muted">{product.sizeNote}</p>}
+        {product.sizeNote && <p className={`mt-2 text-xs leading-relaxed ${inverse ? "text-white/60" : "text-charcoal-muted"}`}>{product.sizeNote}</p>}
       </div>
-      <Button asChild size="lg" className="w-full">
+      <Button asChild size="lg" variant={inverse ? "inverse" : "default"} className="w-full">
         <a href={getProductInquiryLink(product.name, size)} target="_blank" rel="noopener noreferrer">
           <MessageCircle aria-hidden />
           {label}

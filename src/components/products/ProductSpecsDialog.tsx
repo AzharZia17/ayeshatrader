@@ -18,16 +18,16 @@ export function ProductSpecsDialog({ product, open, onOpenChange }: Props) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-3xl">
-        <div className="grid gap-6 sm:grid-cols-[14rem_1fr]">
+        <div className="grid gap-6 sm:grid-cols-[13rem_1fr] sm:gap-8">
           <ProductImage
             src={product.image}
             alt={product.imageAlt}
             sizes="(max-width: 640px) 60vw, 224px"
-            className="mx-auto w-full max-w-56 self-start rounded-md sm:max-w-none"
+            className="mx-auto w-full max-w-56 self-start  sm:max-w-none"
           />
           <div className="min-w-0">
             <DialogHeader className="pr-8">
-              <p className="eyebrow text-brand">{getCategoryName(product.category)}</p>
+              <p className="eyebrow">{getCategoryName(product.category)}</p>
               <DialogTitle className="text-xl">{product.name}</DialogTitle>
               <DialogDescription>Quick specs</DialogDescription>
             </DialogHeader>

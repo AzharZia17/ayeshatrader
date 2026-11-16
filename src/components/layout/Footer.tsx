@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { Clock, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import {
   ADDRESS_LINES,
   BUSINESS_HOURS,
   BUSINESS_NAME,
-  BUSINESS_TAGLINE,
   CONTACT_NUMBERS,
   MAPS_URL,
   NAV_LINKS,
@@ -13,28 +12,32 @@ import {
 import { CATEGORIES } from "@/lib/products";
 import { Logo } from "@/components/shared/Logo";
 
-const heading = "text-xs font-semibold tracking-[0.12em] text-white uppercase";
-const link = "text-sm text-white/70 transition-colors hover:text-white";
+const heading = "text-[0.6875rem] font-bold tracking-[0.22em] text-white/50 uppercase";
+const link = "text-[0.9375rem] text-white/80 transition-colors hover:text-white";
 
 export function Footer() {
   return (
-    <footer className="bg-brand-hover text-white">
-      <div className="border-b border-white/10">
-        <p className="container-page py-12 text-3xl leading-tight font-semibold tracking-tight text-white sm:text-5xl">
-          Reliable Cables. <span className="text-[#E9C4CF]">Trusted Quality.</span>
-        </p>
-      </div>
-      <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
-        <div className="max-w-xs">
+    <footer className="relative overflow-hidden bg-ink text-white">
+      <div aria-hidden className="palette-bar absolute inset-x-0 top-0" />
+      <span
+        aria-hidden
+        className="display pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 text-[22vw] leading-none whitespace-nowrap text-white/[0.035] select-none"
+      >
+        Ayesha
+      </span>
+
+      <div className="container-page relative grid gap-14 pt-20 pb-16 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
+        <div>
           <Logo inverse />
-          <p className="mt-6 text-sm leading-relaxed text-white/70">
-            {BUSINESS_TAGLINE} Electrical wires and cables, Gujranwala.
+          <p className="display mt-8 max-w-xs text-3xl text-white">
+            Reliable cables.
+            <span className="block text-accent-yellow">Trusted quality.</span>
           </p>
         </div>
 
         <nav aria-label="Product categories">
           <h2 className={heading}>Products</h2>
-          <ul className="mt-5 space-y-3">
+          <ul className="mt-6 space-y-3.5">
             {CATEGORIES.map((c) => (
               <li key={c.slug}>
                 <Link href={`/products?category=${c.slug}`} className={link}>
@@ -47,7 +50,7 @@ export function Footer() {
 
         <nav aria-label="Footer">
           <h2 className={heading}>Company</h2>
-          <ul className="mt-5 space-y-3">
+          <ul className="mt-6 space-y-3.5">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
                 <Link href={l.href} className={link}>
@@ -60,43 +63,36 @@ export function Footer() {
 
         <div>
           <h2 className={heading}>Contact</h2>
-          <ul className="mt-5 space-y-4 text-sm text-white/70">
-            <li className="flex gap-3">
-              <MapPin aria-hidden className="mt-0.5 size-4 shrink-0 text-white/50" />
+          <ul className="mt-6 space-y-3.5 text-[0.9375rem] text-white/80">
+            {CONTACT_NUMBERS.map((n) => (
+              <li key={n.tel}>
+                <a href={`tel:${n.tel}`} className="font-display text-2xl text-white hover:text-white/80">
+                  {n.display}
+                </a>
+              </li>
+            ))}
+            <li className="pt-2">
               <a href={MAPS_URL} target="_blank" rel="noopener noreferrer" className="hover:text-white">
                 {ADDRESS_LINES.join(" ")}
               </a>
             </li>
-            <li className="flex gap-3">
-              <Phone aria-hidden className="mt-0.5 size-4 shrink-0 text-white/50" />
-              <span className="flex flex-col gap-1">
-                {CONTACT_NUMBERS.map((n) => (
-                  <a key={n.tel} href={`tel:${n.tel}`} className="hover:text-white">
-                    {n.display}
-                  </a>
-                ))}
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <MessageCircle aria-hidden className="mt-0.5 size-4 shrink-0 text-white/50" />
-              <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" className="hover:text-white">
-                Message us on WhatsApp
+            <li className="text-white/60">{BUSINESS_HOURS}</li>
+            <li className="pt-2">
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 border-b border-white/40 pb-0.5 font-semibold text-white hover:border-white"
+              >
+                WhatsApp us
+                <ArrowUpRight aria-hidden className="size-4" />
               </a>
-            </li>
-            <li className="flex gap-3">
-              <Clock aria-hidden className="mt-0.5 size-4 shrink-0 text-white/50" />
-              <span>{BUSINESS_HOURS}</span>
             </li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10">
-        <div className="container-page flex flex-col gap-2 py-6 text-xs text-white/50 sm:flex-row sm:justify-between">
-          <p>
-            © {BUSINESS_NAME}. All rights reserved.
-          </p>
-          
-        </div>
+      <div className="relative border-t border-white/10">
+        <p className="container-page py-6 pb-24 text-xs text-white/50 lg:pb-6">© {BUSINESS_NAME}. All rights reserved.</p>
       </div>
     </footer>
   );

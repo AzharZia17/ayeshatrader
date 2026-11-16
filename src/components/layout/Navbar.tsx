@@ -3,12 +3,11 @@
 import * as React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MenuIcon, MessageCircle, Phone } from "lucide-react";
+import { ArrowUpRight, MenuIcon, MessageCircle, Phone } from "lucide-react";
 import { CONTACT_NUMBERS, NAV_LINKS, getWhatsAppLink } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Logo } from "@/components/shared/Logo";
-import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetClose,
@@ -34,27 +33,37 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className={cn("sticky top-0 z-40 border-b border-border bg-white transition-shadow duration-200", scrolled && "shadow-[0_2px_12px_rgba(36,33,36,0.08)]")}>
-      <div className="container-page flex h-[4.5rem] lg:h-20 items-center justify-between gap-6">
+    <header
+      className={cn(
+        "sticky top-0 z-40 bg-white/95 backdrop-blur transition-[box-shadow,border-color] duration-300",
+        scrolled ? "border-b border-transparent shadow-[0_8px_30px_-18px_rgba(12,13,8,0.35)]" : "border-b border-border",
+      )}
+    >
+      <div className="container-page flex h-20 items-center justify-between gap-6">
         <Logo />
 
-        <nav aria-label="Primary" className="hidden h-full lg:block">
-          <ul className="flex h-full items-center gap-9">
+        <nav aria-label="Primary" className="hidden lg:block">
+          <ul className="flex items-center gap-10">
             {NAV_LINKS.map((link) => {
               const active = isActive(pathname, link.href);
               return (
-                <li key={link.href} className="h-full">
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "flex h-full items-center border-b-2 pt-0.5 text-[0.9375rem] font-medium transition-colors",
-                      active
-                        ? "border-brand text-charcoal"
-                        : "border-transparent text-charcoal-muted hover:text-charcoal",
+                      "group relative py-2 text-[0.8125rem] font-semibold tracking-[0.06em] uppercase transition-colors",
+                      active ? "text-brand" : "text-charcoal hover:text-brand",
                     )}
                   >
                     {link.label}
+                    <span
+                      aria-hidden
+                      className={cn(
+                        "absolute inset-x-0 -bottom-0.5 h-px origin-left bg-brand transition-transform duration-300",
+                        active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100",
+                      )}
+                    />
                   </Link>
                 </li>
               );
@@ -65,42 +74,35 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
-              <MessageCircle aria-hidden />
-              WhatsApp Inquiry
-            </a>
-          </Button>
-
-          <Button asChild size="icon" className="sm:hidden" aria-label="WhatsApp inquiry">
-            <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp inquiry">
-              <MessageCircle aria-hidden />
+              Get a Quote
+              <ArrowUpRight aria-hidden />
             </a>
           </Button>
 
           <Sheet>
-            <SheetTrigger
-              render={<Button variant="outline" size="icon" className="lg:hidden" aria-label="Open menu" />}
-            >
+            <SheetTrigger render={<Button variant="outline" size="icon" className="lg:hidden" aria-label="Open menu" />}>
               <MenuIcon aria-hidden />
             </SheetTrigger>
-            <SheetContent side="right" className="w-[min(20rem,90vw)] gap-0 p-0">
-              <SheetHeader className="border-b border-border p-5">
-                <SheetTitle>Menu</SheetTitle>
+            <SheetContent side="right" className="w-[min(22rem,92vw)] gap-0 bg-white p-0">
+              <SheetHeader className="p-6 pb-2">
+                <SheetTitle className="sr-only">Menu</SheetTitle>
                 <SheetDescription className="sr-only">Site navigation</SheetDescription>
+                <Logo />
               </SheetHeader>
-              <nav aria-label="Mobile" className="flex-1 overflow-y-auto">
-                <ul>
+              <nav aria-label="Mobile" className="flex-1 overflow-y-auto px-6 py-6">
+                <ul className="space-y-1">
                   {NAV_LINKS.map((link) => {
                     const active = isActive(pathname, link.href);
                     return (
-                      <li key={link.href} className="border-b border-border">
+                      <li key={link.href}>
                         <SheetClose
                           render={
                             <Link
                               href={link.href}
                               aria-current={active ? "page" : undefined}
                               className={cn(
-                                "block border-l-2 px-5 py-4 text-base font-medium",
-                                active ? "border-brand text-brand" : "border-transparent text-charcoal",
+                                "block border-b border-border py-4 font-display text-3xl tracking-tight",
+                                active ? "text-brand" : "text-charcoal",
                               )}
                             />
                           }
@@ -112,16 +114,15 @@ export function Navbar() {
                   })}
                 </ul>
               </nav>
-              <div className="space-y-3 p-5">
+              <div className="space-y-4 bg-surface-gray p-6">
                 <Button asChild className="w-full" size="lg">
                   <a href={getWhatsAppLink()} target="_blank" rel="noopener noreferrer">
                     <MessageCircle aria-hidden />
                     WhatsApp Inquiry
                   </a>
                 </Button>
-                <Separator />
                 {CONTACT_NUMBERS.map((n) => (
-                  <a key={n.tel} href={`tel:${n.tel}`} className="flex items-center gap-2 text-sm font-medium text-charcoal">
+                  <a key={n.tel} href={`tel:${n.tel}`} className="flex items-center gap-2 text-sm font-semibold text-charcoal">
                     <Phone aria-hidden className="size-4 text-brand" />
                     {n.display}
                   </a>

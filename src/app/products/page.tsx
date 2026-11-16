@@ -17,12 +17,12 @@ export default function ProductsPage() {
     <>
       <PageHeader
         crumbs={[{ label: "Home", href: "/" }, { label: "Products" }]}
-        eyebrow="Product Catalog"
-        title="Products"
+        eyebrow="Catalog"
+        title="Our products"
         image={{ src: "/images/products/flexible-multicore-cable.jpg", alt: "Black flexible multi-core cable" }}
-        description="Search by name, size or application. Request a price for the size you need."
+        description="Search by name, size or application, then request a price."
       />
-      <section className="py-10 lg:py-14">
+      <section className="py-14 lg:py-20">
         <div className="container-page">
           <Suspense fallback={<div className="h-96" aria-hidden />}>
             <ProductCatalog />

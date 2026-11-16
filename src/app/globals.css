@@ -5,19 +5,22 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-display);
 
-  /* Corporate Industrial Palette */
-  --color-brand: #641D32;
-  --color-brand-hover: #481323;
-  --color-brand-subtle: #F6ECEF;
-  --color-charcoal: #242124;
-  --color-charcoal-muted: #6D676A;
+  /* Wine & White */
+  --color-brand: #EE1D2A;
+  --color-brand-hover: #C41520;
+  --color-brand-subtle: #F5F3F1;
+  --color-ink: #0C0D08;
+  --color-accent-orange: #F58220;
+  --color-accent-yellow: #FDBE10;
+  --color-charcoal: #16170F;
+  --color-charcoal-muted: #6C6B62;
   --color-surface-gray: #F5F3F1;
-  --color-border-subtle: #E9E4E5;
-  --color-border-strong: #D9D2D4;
+  --color-border-subtle: #ECE9E4;
+  --color-border-strong: #D9D6CF;
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -57,42 +60,42 @@
 
 :root {
   --background: #FFFFFF;
-  --foreground: #242124;
+  --foreground: #16170F;
   --card: #FFFFFF;
-  --card-foreground: #242124;
+  --card-foreground: #16170F;
   --popover: #FFFFFF;
-  --popover-foreground: #242124;
+  --popover-foreground: #16170F;
 
-  /* Deep Corporate Green #641D32 */
-  --primary: #641D32;
+  /* Red */
+  --primary: #EE1D2A;
   --primary-foreground: #FFFFFF;
 
   --secondary: #F5F3F1;
-  --secondary-foreground: #242124;
+  --secondary-foreground: #16170F;
   --muted: #F5F3F1;
-  --muted-foreground: #6D676A;
-  --accent: #F6ECEF;
-  --accent-foreground: #641D32;
+  --muted-foreground: #6C6B62;
+  --accent: #F5F3F1;
+  --accent-foreground: #EE1D2A;
   --destructive: #C53030;
-  --border: #E9E4E5;
-  --input: #E9E4E5;
-  --ring: #641D32;
-  --radius: 0.375rem; /* 6px */
+  --border: #E7E4DF;
+  --input: #E7E4DF;
+  --ring: #EE1D2A;
+  --radius: 0;
 
-  --chart-1: #641D32;
-  --chart-2: #E28743;
+  --chart-1: #EE1D2A;
+  --chart-2: #F58220;
   --chart-3: #2563EB;
-  --chart-4: #FACC15;
-  --chart-5: #242124;
+  --chart-4: #FDBE10;
+  --chart-5: #0C0D08;
 
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #242124;
-  --sidebar-primary: #641D32;
+  --sidebar-foreground: #16170F;
+  --sidebar-primary: #EE1D2A;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F6ECEF;
-  --sidebar-accent-foreground: #641D32;
-  --sidebar-border: #E9E4E5;
-  --sidebar-ring: #641D32;
+  --sidebar-accent: #F5F3F1;
+  --sidebar-accent-foreground: #EE1D2A;
+  --sidebar-border: #E7E4DF;
+  --sidebar-ring: #EE1D2A;
 }
 
 @layer base {
@@ -107,78 +110,114 @@
     scroll-padding-top: 6rem;
   }
   h1, h2, h3, h4 {
-    @apply text-charcoal;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--color-charcoal);
     text-wrap: balance;
   }
-  p {
-    text-wrap: pretty;
-  }
+  p { text-wrap: pretty; }
   :focus-visible {
     outline: 2px solid var(--color-brand);
-    outline-offset: 2px;
+    outline-offset: 3px;
   }
+  ::selection { background: var(--color-brand); color: #fff; }
 }
 
 @utility container-page {
   margin-inline: auto;
   width: 100%;
-  max-width: 80rem;
-  padding-inline: 1rem;
-  @media (min-width: 40rem) {
-    padding-inline: 1.5rem;
-  }
-  @media (min-width: 64rem) {
-    padding-inline: 2rem;
-  }
+  max-width: 82rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 40rem) { padding-inline: 2rem; }
+  @media (min-width: 64rem) { padding-inline: 3rem; }
 }
 
 @utility section-y {
   padding-block: 4rem;
-  @media (min-width: 64rem) {
-    padding-block: 6rem;
-  }
+  @media (min-width: 48rem) { padding-block: 5.5rem; }
+  @media (min-width: 64rem) { padding-block: 8rem; }
 }
 
 @utility eyebrow {
-  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
   line-height: 1rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-weight: 700;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--color-brand);
+  @media (min-width: 40rem) { letter-spacing: 0.22em; }
+  &::before {
+    content: "";
+    width: 1.75rem;
+    height: 1px;
+    background: currentColor;
+  }
 }
+
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.06;
+}
+
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
 
 @keyframes rise-in {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(18px); }
   to { opacity: 1; transform: none; }
 }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-/* Fine diagonal cable-strand pattern for dark sections */
-.line-pattern {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14'%3E%3Cpath d='M-2 2 L2 -2 M0 14 L14 0 M12 16 L16 12' stroke='white' stroke-opacity='0.06' stroke-width='1'/%3E%3C/svg%3E");
+@keyframes arch-in {
+  from { opacity: 0; transform: translateY(28px) scale(0.98); }
+  to { opacity: 1; transform: none; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .hero-in > * { animation: rise-in 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+  .hero-in > * { animation: rise-in 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
   .hero-in > *:nth-child(2) { animation-delay: 0.08s; }
   .hero-in > *:nth-child(3) { animation-delay: 0.16s; }
   .hero-in > *:nth-child(4) { animation-delay: 0.24s; }
   .hero-in > *:nth-child(5) { animation-delay: 0.32s; }
-  .marquee-track { animation: marquee 38s linear infinite; }
-  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .arch-in { animation: arch-in 1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.15s both; }
   @supports (animation-timeline: view()) {
     .reveal {
       animation: rise-in linear both;
       animation-timeline: view();
-      animation-range: entry 0% entry 40%;
+      animation-range: entry 0% entry 35%;
     }
   }
+}
+
+/* Sliding underline for text links */
+.link-line {
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+  transition: background-size 0.35s ease;
+}
+.link-line:hover, .group:hover .link-line { background-size: 100% 1px; }
+
+.font-display { font-weight: 600; letter-spacing: -0.02em; }
+
+/* Fine diagonal cable-strand texture for wine sections */
+.strand-pattern {
+  background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.045) 0 1px, transparent 1px 14px);
+}
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .float-slow { animation: float-y 6s ease-in-out infinite; }
+}
+
+/* Signature palette stripe: red, orange, yellow */
+.palette-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-brand) 0 34%, var(--color-accent-orange) 34% 67%, var(--color-accent-yellow) 67% 100%);
 }
