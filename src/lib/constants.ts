@@ -8,7 +8,7 @@ export const FOUNDED_YEAR = 2010;
 export const EMPLOYEES = "30+";
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ayeshatraders.pk";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ayeshatrader.com";
 
 export interface ContactNumber {
   /** Number as displayed, e.g. 0320-5451000 */
